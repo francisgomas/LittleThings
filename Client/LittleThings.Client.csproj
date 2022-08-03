@@ -16,8 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="Pages\Admin\" />
     <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>
