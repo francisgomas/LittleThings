@@ -1,0 +1,12 @@
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\bin\Debug\net6.0\LittleThings.Shared.deps.json
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\bin\Debug\net6.0\LittleThings.Shared.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\bin\Debug\net6.0\LittleThings.Shared.pdb
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.csproj.AssemblyReference.cache
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.AssemblyInfoInputs.cache
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.AssemblyInfo.cs
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\refint\LittleThings.Shared.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\LittleThings.Shared.pdb
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Shared\obj\Debug\net6.0\ref\LittleThings.Shared.dll

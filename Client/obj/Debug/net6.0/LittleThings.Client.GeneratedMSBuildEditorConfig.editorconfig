@@ -1,0 +1,55 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = LittleThings.Client
+build_property.RootNamespace = LittleThings.Client
+build_property.ProjectDir = C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-dyig38nlu0
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-6jcfpc7pq7
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Navbar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdmJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-imfn7g0ip5
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ko2nx3z9r1
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Search.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNlYXJjaC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-aihze85z1l
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Topbar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRvcGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-208itbmse4
