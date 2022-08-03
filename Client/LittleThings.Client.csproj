@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Admin\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>

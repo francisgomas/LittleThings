@@ -813,7 +813,6 @@ C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\bundle\LittleThings.Client.styles.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\projectbundle\LittleThings.Client.bundle.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\LittleThings.Client.csproj.CopyComplete

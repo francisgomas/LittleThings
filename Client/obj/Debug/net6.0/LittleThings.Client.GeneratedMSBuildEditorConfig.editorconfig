@@ -22,6 +22,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/SocialMedia/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU29jaWFsTWVkaWFcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -41,10 +45,6 @@ build_metadata.AdditionalFiles.CssScope = b-6jcfpc7pq7
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Navbar.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdmJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-imfn7g0ip5
-
-[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-ko2nx3z9r1
 
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Search.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNlYXJjaC5yYXpvcg==
