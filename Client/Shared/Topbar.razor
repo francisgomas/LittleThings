@@ -1,4 +1,5 @@
 ﻿@inject ISocialMediaService SocialMediaService;
+@inject NavigationManager NavigationManager;
 
 <!-- Topbar Start -->
 <div class="container-fluid">
@@ -51,4 +52,6 @@
     {
         await SocialMediaService.GetSocialMedias();
     }
+
+
 }

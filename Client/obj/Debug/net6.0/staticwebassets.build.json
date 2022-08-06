@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CkvYXJmjDV/uKGnhFtZrUdQcv+YtJ0ZOqNFIRjvSbsQ=",
+  "Hash": "YjkXsZQOTLKnGGxKSswAAOhtvd1cwRJJLMQDoIm/uDI=",
   "Source": "LittleThings.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.7\\build\\net6.0\\blazor.webassembly.js"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\blazored.localstorage\\4.2.0\\lib\\net6.0\\Blazored.LocalStorage.dll"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\dotnet.6.0.7.nmoenf3qpz.js",
@@ -253,6 +270,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.7\\lib\\net6.0\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.7\\lib\\net6.0\\Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
@@ -4080,6 +4114,23 @@
       "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\System.Security.Cryptography.OpenSsl.dll"
     },
     {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\bxyyhyRm.gz",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\bzSABL8k.gz",
       "SourceId": "LittleThings.Client",
       "SourceType": "Computed",
@@ -5746,6 +5797,23 @@
       "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\System.Data.dll"
     },
     {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\PyA+5HJc.gz",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.LocalStorage.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Blazored.LocalStorage.dll"
+    },
+    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\qc7VHC9U.gz",
       "SourceId": "LittleThings.Client",
       "SourceType": "Computed",
@@ -7189,6 +7257,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icon-192.png"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\img\\payments.png",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "img/payments.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\payments.png"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\index.html",

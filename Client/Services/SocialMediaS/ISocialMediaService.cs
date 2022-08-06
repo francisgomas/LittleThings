@@ -1,6 +1,6 @@
 ﻿global using LittleThings.Shared;
 
-namespace LittleThings.Client.Services.SocialMediaService
+namespace LittleThings.Client.Services.SocialMediaS
 {
     public interface ISocialMediaService
     {

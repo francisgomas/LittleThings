@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 
-namespace LittleThings.Client.Services.SocialMediaService
+namespace LittleThings.Client.Services.SocialMediaS
 {
     public class SocialMediaService : ISocialMediaService
     {

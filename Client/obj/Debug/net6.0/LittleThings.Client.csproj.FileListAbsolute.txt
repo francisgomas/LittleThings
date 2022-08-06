@@ -824,3 +824,13 @@ C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Topbar.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Footer.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Search.razor.rz.scp.css
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Slider.razor.rz.scp.css
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Header.razor.rz.scp.css
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Blazored.LocalStorage.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\Blazored.LocalStorage.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\build-gz\PyA+5HJc.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\build-gz\bxyyhyRm.gz

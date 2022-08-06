@@ -22,10 +22,20 @@ namespace LittleThings.Server.Data
                     InNewTab = true
                 }
             );
+
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                {
+                    Id = 1,
+                    RoleName = "Customer",
+                }
+            );
         }
 
         public DbSet<Category> Category { get; set; }
         public DbSet<SocialMedia> SocialMedia { get; set; }
         public DbSet<SubCategory> SubCategory { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

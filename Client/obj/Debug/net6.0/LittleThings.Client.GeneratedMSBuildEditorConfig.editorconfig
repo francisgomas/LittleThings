@@ -26,6 +26,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU29jaWFsTWVkaWFcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Auth/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Auth/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEZvb3Rlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-dyig38nlu0
 
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Header.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ihnym6hevt
+
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6jcfpc7pq7
@@ -49,6 +61,10 @@ build_metadata.AdditionalFiles.CssScope = b-imfn7g0ip5
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Search.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNlYXJjaC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-aihze85z1l
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Slider.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNsaWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-jdtnjdtmwe
 
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Shared/Topbar.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRvcGJhci5yYXpvcg==

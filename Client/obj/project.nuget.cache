@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "F9Fup0jVlvMTxdxy2dPVSVOH35n+B5bK5JqXY4T79VB8TFf+qHfhrwYXHF58hIxy95ovXxAuEy/i7zLT5KNkTQ==",
+  "dgSpecHash": "sG4RHtq3l+BMpSxZgfRoLT7aRmhKeuBLb5c6QSPwW0qf53csgl2Usqb25hh2hT80JCppWXg8dmXSGUZDxKk6RQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\LittleThings.Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Gomas\\.nuget\\packages\\blazored.localstorage\\4.2.0\\blazored.localstorage.4.2.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.7\\microsoft.aspnetcore.authorization.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.7\\microsoft.aspnetcore.components.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.7\\microsoft.aspnetcore.components.analyzers.6.0.7.nupkg.sha512",
+    "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.7\\microsoft.aspnetcore.components.authorization.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\6.0.7\\microsoft.aspnetcore.components.forms.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.web\\6.0.7\\microsoft.aspnetcore.components.web.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.7\\microsoft.aspnetcore.components.webassembly.6.0.7.nupkg.sha512",

@@ -20,10 +20,6 @@ namespace LittleThings.Server.Controllers.Admin
         public async Task<ActionResult<List<SocialMedia>>> GetSMLinks()
         {
             var links = await _dataContext.SocialMedia.ToListAsync();
-            if (links == null)
-            {
-                return NotFound();
-            }
             return Ok(links);
         }
 
