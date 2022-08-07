@@ -1,5 +1,9 @@
 ﻿@page "/login"
+@using Microsoft.AspNetCore.WebUtilities
 @inject NavigationManager NavigationManager
+@inject IAuthService AuthService
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <PageTitle>Login</PageTitle>
 
@@ -10,30 +14,56 @@
     <div class="row px-xl-5">
         <div class="col-lg-12 mb-5">
             <div class="contact-form">
-                <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                    <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Enter username" required="required" data-validation-required-message="Please enter your name" aria-invalid="false">
-                        <p class="help-block text-danger"></p>
+                @if (message != "")
+                {
+                     <div class="alert alert-danger" role="alert">
+                      @message
                     </div>
-                    <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Enter password" required="required" data-validation-required-message="Please enter your email">
-                        <p class="help-block text-danger"></p>
+                }
+                <EditForm Model="user" OnValidSubmit="onLogin">
+                    <DataAnnotationsValidator />
+                    <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" @bind-value="user.Username">
+                        <ValidationMessage For="@(() => user.Username)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" @bind-value="user.Password">
+                        <ValidationMessage For="@(() => user.Password)" />
                     </div>
                     <div>
-                        <button class="btn btn-primary py-2 px-5" type="submit" id="sendMessageButton">Login</button>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="Login"/>
                         <button class="btn btn-info py-2 px-5" @onclick="ShowRegister" id="sendMessageButton">Yet to Register? </button>
                     </div>
-                </form>
+                </EditForm>
             </div>
         </div>
     </div>
 </div>
 
 @code{
-    protected override async Task OnInitializedAsync()
-    {
+    UserLogin user = new UserLogin();
+    private string returnUrl, message = string.Empty;
 
+    protected override void OnInitialized()
+    { 
+        returnUrl = NavigationManager.BaseUri;
+    }
+
+    private async Task onLogin()
+    {
+        var result = await AuthService.Login(user);
+        if (result.Success)
+        {
+            message = string.Empty;
+
+            await LocalStorage.SetItemAsync("authToken", result.Data);
+            await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            NavigationManager.NavigateTo(returnUrl, true);
+        }
+        else
+        {
+            message = result.Message;
+        }
     }
 
     void ShowRegister()

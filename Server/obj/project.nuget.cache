@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MSuXJ5PocMKjZg1KIXesv8RXt6/q5tX5e2xHpqGUsAenin7DMb7PsvB6cMIo7gbAh1UMXQVaTw6bdXE1bVpNPg==",
+  "dgSpecHash": "VABP0GJdvzbPkh4iGOXzTUL3QJx7C+LCZT++zfDx0zbK7QlT+d4LSjmx+B8oXMfdYGFxCxQrGyyjRXyeEqA4VA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Server\\LittleThings.Server.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\6.0.7\\microsoft.aspnetcore.components.webassembly.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\6.0.7\\microsoft.aspnetcore.components.webassembly.server.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.7\\microsoft.aspnetcore.metadata.6.0.7.nupkg.sha512",
+    "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
@@ -49,9 +50,11 @@
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.jsinterop\\6.0.7\\microsoft.jsinterop.6.0.7.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.7\\microsoft.jsinterop.webassembly.6.0.7.nupkg.sha512",
+    "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Gomas\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

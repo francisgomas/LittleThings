@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tHlzgWL2zVR9Lgf7Vmg85vmxcHR3MnAiUBDFGyd5tsU=",
+  "Hash": "RvkZqf0mn/3yydpMwh0XFDlvOo/nEeeg02nPnIZ1+vU=",
   "Source": "LittleThings.Server",
   "BasePath": "_content/LittleThings.Server",
   "Mode": "Default",
@@ -386,6 +386,23 @@
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.7\\lib\\net6.0\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.WebUtilities.dll"
+    },
+    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.CSharp.dll",
       "SourceId": "LittleThings.Client",
       "SourceType": "Project",
@@ -673,6 +690,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.7\\lib\\net6.0\\Microsoft.JSInterop.WebAssembly.dll"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\lib\\netstandard2.0\\Microsoft.Net.Http.Headers.dll"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.VisualBasic.Core.dll",
@@ -4976,6 +5010,23 @@
       "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\System.Core.dll"
     },
     {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\IDfyuGkA.gz",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll"
+    },
+    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\iGl1ySqq.gz",
       "SourceId": "LittleThings.Client",
       "SourceType": "Project",
@@ -6385,6 +6436,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\System.Xml.XmlDocument.dll"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\vbTX+h36.gz",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\obj\\Debug\\net6.0\\build-gz\\vcgSAYjo.gz",

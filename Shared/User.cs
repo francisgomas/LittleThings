@@ -13,8 +13,7 @@ namespace LittleThings.Shared
         public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required, EmailAddress]
         public string Email { get; set; }
         [Required]
         public string Username { get; set; }

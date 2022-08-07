@@ -1,5 +1,6 @@
 ﻿@page "/register"
 @inject NavigationManager NavigationManager
+@inject IAuthService AuthService
 
 <PageTitle>Register</PageTitle>
 
@@ -10,46 +11,64 @@
     <div class="row px-xl-5">
         <div class="col-lg-12 mb-5">
             <div class="contact-form">
-                <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" data-validation-required-message="Please enter your name" aria-invalid="false">
-                        <p class="help-block text-danger"></p>
+                <div class="alert @messageCssClass" role="alert">
+                  @message
+                </div>
+                <EditForm Model="user" OnValidSubmit="onRegister">
+                    <DataAnnotationsValidator />
+                     <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="Enter full name" @bind-value="user.Name">
+                        <ValidationMessage For="@(() => user.Name)" />
                     </div>
-                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Enter email" required="required" data-validation-required-message="Please enter your name" aria-invalid="false">
-                        <p class="help-block text-danger"></p>
+                     <div class="control-group mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" @bind-value="user.Email" >
+                        <ValidationMessage For="@(() => user.Email)" />
                     </div>
-                    <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Enter username" required="required" data-validation-required-message="Please enter your name" aria-invalid="false">
-                        <p class="help-block text-danger"></p>
+                    <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" @bind-value="user.Username">
+                        <ValidationMessage For="@(() => user.Username)" />
                     </div>
-                    <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Enter password" required="required" data-validation-required-message="Please enter your email">
-                        <p class="help-block text-danger"></p>
+                    <div class="control-group mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" @bind-value="user.Password">
+                        <ValidationMessage For="@(() => user.Password)" />
                     </div>
-                    <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Reenter password" required="required" data-validation-required-message="Please enter your email">
-                        <p class="help-block text-danger"></p>
+                    <div class="control-group mb-3">
+                        <input type="password" class="form-control" id="confirm-password" placeholder="Reenter password" @bind-value="user.ConfirmPassword">
+                        <ValidationMessage For="@(() => user.ConfirmPassword)" />
                     </div>
                     <div>
-                        <button class="btn btn-primary py-2 px-5" type="submit" id="sendMessageButton">Create Account </button>
-                        <button class="btn btn-info py-2 px-5" @onclick="ShowLogin" id="sendMessageButton">Go to login </button>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="Create Account"/>
+                        <button class="btn btn-info py-2 px-5" @onclick="ShowLogin" >Already registered? </button>
                     </div>
-                </form>
+                </EditForm>
             </div>
         </div>
     </div>
 </div>
 
 @code{
-    protected override async Task OnInitializedAsync()
-    {
-
-    }
+    UserRegister user = new UserRegister();
+    string message = string.Empty;
+    string messageCssClass = string.Empty;
 
     void ShowLogin()
     {
         NavigationManager.NavigateTo("/login");
+    }
+
+    async Task onRegister()
+    {
+        var result = await AuthService.Register(user);
+        message = result.Message;
+        if (result.Success)
+        {
+            messageCssClass = "alert-success";
+        }
+        else
+        {
+            messageCssClass = "alert-danger";
+        }
+
+        user = new UserRegister();
     }
 }

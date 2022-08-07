@@ -820,7 +820,6 @@ C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\refint\LittleThings.Client.dll
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\LittleThings.Client.pdb
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\ref\LittleThings.Client.dll
-C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Navbar.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Topbar.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Footer.razor.rz.scp.css
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\scopedcss\Shared\Search.razor.rz.scp.css
@@ -834,3 +833,11 @@ C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\Microsoft.AspNetCore.Components.Authorization.dll
 C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\build-gz\bxyyhyRm.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.Net.Http.Headers.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.Net.Http.Headers.dll.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\wwwroot\_framework\Microsoft.AspNetCore.WebUtilities.dll.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\bin\Debug\net6.0\Microsoft.Net.Http.Headers.dll
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\build-gz\vbTX+h36.gz
+C:\Users\Gomas\Documents\Projects\NET_Core\LittleThings\Client\obj\Debug\net6.0\build-gz\IDfyuGkA.gz

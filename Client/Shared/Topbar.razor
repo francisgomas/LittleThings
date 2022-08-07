@@ -1,5 +1,9 @@
 ﻿@inject ISocialMediaService SocialMediaService;
-@inject NavigationManager NavigationManager;
+@using System.Security.Claims
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthStateProvider
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject ILocalStorageService LocalStorage
 
 <!-- Topbar Start -->
 <div class="container-fluid">
@@ -42,16 +46,96 @@
                 <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Little</span>Things</h1>
             </a>
         </div>
-        <Search />
+        @if (!isAdminAuth)
+        {
+            <Search />
+        }
     </div>
 </div>
 <!-- Topbar End -->
 
+<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Little</span>Things</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                            <a @onclick="@(() => NavigationManager.NavigateTo("/"))" class="nav-item nav-link active">Home</a>
+                        @if (!isAdminAuth)
+                        {
+                            <a href="shop.html" class="nav-item nav-link">Shop</a>
+                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Administration</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a @onclick="@(() => NavigationManager.NavigateTo("admin/social-media"))" class="dropdown-item">Social Media</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @if (!isCustAuth && !isAdminAuth)
+                    {
+                         <div class="navbar-nav ml-auto py-0">
+                            <a @onclick="@(() => NavigationManager.NavigateTo("login"))" class="nav-item nav-link">Login</a>
+                            <a @onclick="@(() => NavigationManager.NavigateTo("register"))" class="nav-item nav-link">Register</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="navbar-nav ml-auto py-0">
+                            <a @onclick="Logout" class="nav-item nav-link">Logout</a>
+                        </div>
+                    }
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->
+
 @code{
+    bool isCustAuth = false;
+    bool isAdminAuth = false;
+
     protected override async Task OnInitializedAsync()
     {
         await SocialMediaService.GetSocialMedias();
+
+        if ((await AuthStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
+        {
+            string role = (await AuthStateProvider.GetAuthenticationStateAsync()).User.Claims.FirstOrDefault(t => t.Type == ClaimTypes.Role).Value;
+            if (role.Contains("Customer"))
+            {
+                isCustAuth = true;
+            }
+            if (role.Contains("Admin"))
+            {
+                isAdminAuth = true;
+            }
+        }
     }
 
-
+    private async Task Logout()
+    {
+        await LocalStorage.RemoveItemAsync("authToken");
+        await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        NavigationManager.NavigateTo("", true);
+    }
 }
