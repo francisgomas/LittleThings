@@ -99,9 +99,6 @@ namespace LittleThings.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("InNewTab")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Link")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -115,7 +112,6 @@ namespace LittleThings.Server.Migrations
                         {
                             Id = 1,
                             Icon = "fab fa-facebook-f",
-                            InNewTab = true,
                             Link = "https://www.facebook.com/"
                         });
                 });

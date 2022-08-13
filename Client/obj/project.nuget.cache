@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "72Mckr/hmej1W245nMIRiddYEonix/eb+Op+/v6ncTvxCp+6JgeGpPZNFsf4RZcUjlW3zlXQp1NOPe89PC16+A==",
+  "dgSpecHash": "iZ2Z6zPsW7suzOFv91gydx+JiiClQWgLYlNGheNKtqRNMnpAfZ/AgogQngtrrAaLQmbnQFmPhSfhA3n69QhQ3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\LittleThings.Client.csproj",
   "expectedPackageFiles": [
@@ -38,7 +38,7 @@
     "C:\\Users\\Gomas\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Gomas\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
-    "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.7\\microsoft.netcore.app.runtime.mono.browser-wasm.6.0.7.nupkg.sha512"
+    "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.8\\microsoft.netcore.app.runtime.mono.browser-wasm.6.0.8.nupkg.sha512"
   ],
   "logs": []
 }

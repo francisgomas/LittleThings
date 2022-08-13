@@ -36,6 +36,12 @@
         <a class="dismiss">🗙</a>
     </div>
 
+    <script>
+        function BlazorSetHeader(title = null) {
+            document.getElementById("heading").innerHTML = title;
+        }
+    </script>
+
     <script src="_framework/blazor.webassembly.js"></script>
 
     <!-- JavaScript Libraries -->
@@ -50,6 +56,8 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
 </body>
 
 </html>

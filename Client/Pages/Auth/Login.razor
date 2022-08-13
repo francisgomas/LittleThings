@@ -5,12 +5,10 @@
 @inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
-<PageTitle>Login</PageTitle>
+<PageTitle>@GetPageTitle()</PageTitle>
 
+<Header Value="@GetPageTitle()"/>
 <div class="container-fluid pt-5">
-    <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">Login</span></h2>
-    </div>
     <div class="row px-xl-5">
         <div class="col-lg-12 mb-5">
             <div class="contact-form">
@@ -43,6 +41,7 @@
 @code{
     UserLogin user = new UserLogin();
     private string returnUrl, message = string.Empty;
+    private string GetPageTitle() => "Login";
 
     protected override void OnInitialized()
     { 

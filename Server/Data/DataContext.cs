@@ -18,8 +18,7 @@ namespace LittleThings.Server.Data
                 {
                     Id = 1,
                     Icon = "fab fa-facebook-f",
-                    Link = "https://www.facebook.com/",
-                    InNewTab = true
+                    Link = "https://www.facebook.com/"
                 }
             );
 

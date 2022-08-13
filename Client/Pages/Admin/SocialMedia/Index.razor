@@ -1,64 +1,74 @@
 ﻿@page "/admin/social-media"
 @inject ISocialMediaService SocialMediaService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
 
-<PageTitle>Social Media</PageTitle>
+<PageTitle>@GetPageTitle()</PageTitle>
 
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5">
-        <div class="col-lg-12">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control p-4" placeholder="Search..">
-                <div class="input-group-append">
-                    <button class="btn btn-primary">Submit</button>
-                </div>
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Icon</th>
+                            <th>Link</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        @if (SocialMediaService.SocialMedias != null)
+                        {
+                           @foreach (var media in SocialMediaService.SocialMedias)
+                           {
+                                <tr>
+                                    <td class="align-middle">@media.Icon</td>
+                                    <td class="align-middle">@media.Link</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-primary" @onclick="(() => onEditSocialMedia(media.Id))" ><i class="fa fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-danger" @onclick="(() => onDeleteSocialMedia(media.Id))"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>
+                           }
+                        }
+                       
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-lg-12 table-responsive mb-5">
-            <table class="table table-bordered text-center mb-0">
-                <thead class="bg-secondary text-dark">
-                    <tr>
-                        <th>Icon</th>
-                        <th>Link</th>
-                        <th>InNewTab</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                    @foreach (var media in SocialMediaService.SocialMedias)
-                   {
-                       <tr>
-                            <td class="align-middle">@media.Icon</td>
-                            <td class="align-middle">@media.Link</td>
-                            <td class="align-middle">
-                                @if (media.InNewTab)
-                                {
-                                    <input type="checkbox" checked disabled />
-                                }
-                                else
-                                {
-                                    <input type="checkbox" disabled />
-                                }
-                            </td>
-                            <td class="align-middle">
-                                <button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button>
-                            </td>
-                        </tr>
-                   }
-                    
-                </tbody>
-            </table>
+        <div class="row px-xl-5">
+            <div class="col-lg-4 col-sm-12">
+                <button class="btn btn-primary" @onclick="CreateSocialMedia"><i class="fa fa-plus"></i> Add Social Media</button>
+            </div>
         </div>
-    </div>
-    <div class="row px-xl-5">
-        <div class="col-lg-4 col-sm-12">
-            <button class="btn btn-primary"><i class="fa fa-plus"></i> Add Social Media</button>
-        </div>
-    </div>
-</div>
+    </div> 
+}
 
 @code{
+    bool isAuthenticated = false;
+    private string GetPageTitle() => "Social Media";
+    void onEditSocialMedia(int? id)
+    {
+        NavigationManager.NavigateTo($"admin/social-media/edit/{id}");
+    }
+
+    private async Task onDeleteSocialMedia(int id)
+    {
+        await SocialMediaService.DeleteSocialMedia(id);
+    }
+
     protected override async Task OnInitializedAsync()
     {
-        await SocialMediaService.GetSocialMedias();
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        await SocialMediaService.GetAdminSocialMedias();
+    }
+
+    void CreateSocialMedia()
+    {
+        NavigationManager.NavigateTo("admin/social-media/edit");
     }
 }

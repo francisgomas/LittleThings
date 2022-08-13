@@ -6,6 +6,11 @@ namespace LittleThings.Client.Services.SocialMediaS
     {
         List<SocialMedia> SocialMedias { get; set; }
         Task GetSocialMedias();
+        Task GetAdminSocialMedias();
+        Task DeleteSocialMedia (int id);
+        Task<SocialMedia> GetSingleSocialMedia(int id);
+        Task UpdateSocialMedia(SocialMedia media);
+        Task CreateSocialMedia(SocialMedia media);
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LittleThings.Server.Data;
 using LittleThings.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class SocialMediaController : ControllerBase
     {
@@ -37,31 +39,40 @@ namespace LittleThings.Server.Controllers.Admin
         public async Task<ActionResult<SocialMedia>> UpdateSocialMedia(SocialMedia sm, int id)
         {
             var socialMedia = await _dataContext.SocialMedia.FirstOrDefaultAsync(h => h.Id == id);
-            if (sm == null)
+            if (socialMedia == null)
             {
                 return NotFound();
             }
             socialMedia.Id = sm.Id;
             socialMedia.Icon = sm.Icon;
             socialMedia.Link = sm.Link;
-            socialMedia.InNewTab = sm.InNewTab;
 
             await _dataContext.SaveChangesAsync();
             return Ok(await GetSMLinks());
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<SocialMedia>> DeleteSocialMedia(SocialMedia sm, int id)
+        public async Task<ActionResult<SocialMedia>> DeleteSocialMedia(int id)
         {
             var socialMedia = await _dataContext.SocialMedia.FirstOrDefaultAsync(h => h.Id == id);
-            if (sm == null)
-            {
-                return NotFound();
-            }
-            _dataContext.SocialMedia.Remove(sm);
-
+            _dataContext.SocialMedia.Remove(socialMedia);
             await _dataContext.SaveChangesAsync();
             return Ok(await GetSMLinks());
+        }
+
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<SocialMedia>> GetSingleSocialMedia(int id)
+        {
+            var sm = await _dataContext.SocialMedia
+            .FirstOrDefaultAsync(h => h.Id == id);
+
+            if (sm != null)
+            {
+                return Ok(sm);
+            }
+            return NotFound("Record not found!");
         }
 
     }

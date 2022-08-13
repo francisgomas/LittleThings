@@ -24,5 +24,10 @@ namespace LittleThings.Client.Services.AuthS
             var result = await _http.PostAsJsonAsync("api/auth/login", request);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
+
+        public async Task<bool> IsUserAuthenticated()
+        {
+            return (await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
+        }
     }
 }

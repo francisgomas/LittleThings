@@ -1,0 +1,74 @@
+﻿@page "/admin/social-media/edit"
+@page "/admin/social-media/edit/{id:int}"
+@inject ISocialMediaService SocialMediaService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
+
+<PageTitle>@GetPageTitle()</PageTitle>
+
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <EditForm Model="media" OnValidSubmit="onSubmit">
+                    <DataAnnotationsValidator />
+                    <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="icon" placeholder="Enter icon" @bind-value="media.Icon">
+                        <ValidationMessage For="@(() => media.Icon)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="link" placeholder="Enter link" @bind-value="media.Link">
+                        <ValidationMessage For="@(() => media.Link)" />
+                    </div>
+                    <div>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="@btnText" />
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/social-media"))">Go Back </button>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code{
+    [Parameter]
+    public int? id { get; set; } 
+    bool isAuthenticated = false;
+    string btnText = string.Empty;
+    private string GetPageTitle() => "Social Media";
+    SocialMedia media = new SocialMedia { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        btnText = id == null ? "Create Social Media" : "Update Social Media";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != null)
+        {
+            media = await SocialMediaService.GetSingleSocialMedia((int)id);
+        } 
+        else
+        {
+            media = new SocialMedia { };
+        }
+    }
+
+    async Task onSubmit()
+    {
+        if (id != null)
+        {
+            await SocialMediaService.UpdateSocialMedia(media);
+        }
+        else
+        {
+            await SocialMediaService.CreateSocialMedia(media);
+        }
+    }
+}

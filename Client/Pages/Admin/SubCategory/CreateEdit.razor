@@ -1,0 +1,70 @@
+﻿@page "/admin/subcategory/edit"
+@page "/admin/subcategory/edit/{id:guid}"
+@inject ISubCategoryService SubCategoryService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
+
+<PageTitle>@GetPageTitle()</PageTitle>
+
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <EditForm Model="subc" OnValidSubmit="onSubmit">
+                    <DataAnnotationsValidator />
+                    <div class="control-group mb-3">
+                        <input type="text" class="form-control" id="subcategory" placeholder="Enter subcategory name" @bind-value="subc.Name">
+                        <ValidationMessage For="@(() => subc.Name)" />
+                    </div>
+                    <div>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="@btnText" />
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/subcategory"))">Go Back </button>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+}
+
+@code{
+    [Parameter]
+    public Guid? id { get; set; } 
+    bool isAuthenticated = false;
+    string btnText = string.Empty;
+    private string GetPageTitle() => "SubCategory";
+    SubCategory subc = new SubCategory { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        btnText = id == null ? "Create SubCategory" : "Update SubCategory";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != null)
+        {
+            subc = await SubCategoryService.GetSingleSubCategory((Guid)id);
+        } 
+        else
+        {
+            subc = new SubCategory { };
+        }
+    }
+
+    async Task onSubmit()
+    {
+        if (id != null)
+        {
+            await SubCategoryService.UpdateSubCategory(subc);
+        }
+        else
+        {
+            await SubCategoryService.CreateSubCategory(subc);
+        }
+    }
+}
