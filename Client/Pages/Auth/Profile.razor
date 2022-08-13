@@ -1,0 +1,58 @@
+﻿@page "/profile"
+@inject IAuthService AuthService
+@attribute [Authorize]
+
+<PageTitle>@GetPageTitle()</PageTitle>
+
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <div class="contact-form">
+                    @if (message != null)
+                    {
+                         <div class="alert @data" role="alert">
+                          @message
+                        </div>
+                    }
+
+                    <EditForm Model="request" OnValidSubmit="onChangePassword">
+                        <DataAnnotationsValidator />
+                        <div class="control-group mb-3">
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" @bind-value="request.Password">
+                            <ValidationMessage For="@(() => request.Password)" />
+                        </div>
+                         <div class="control-group mb-3">
+                            <input type="password" class="form-control" id="confirm-password" placeholder="Enter re-enter password" @bind-value="request.ConfirmPassword">
+                            <ValidationMessage For="@(() => request.ConfirmPassword)" />
+                        </div>
+                        <div>
+                            <input class="btn btn-primary py-2 px-5" type="submit" value="Submit"/>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code{
+    ChangePassword request = new ChangePassword();
+    private string data, message = string.Empty;
+    private string GetPageTitle() => "Profile";
+    bool isAuthenticated = false;
+
+    private async Task onChangePassword()
+    {
+        var result = await AuthService.ChangePassword(request);
+        data = result.Data;
+        message = result.Message;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+    }
+}

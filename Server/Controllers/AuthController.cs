@@ -1,6 +1,7 @@
 ﻿using LittleThings.Client.Services.AuthS;
 using LittleThings.Server.Data;
 using LittleThings.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,32 @@ namespace LittleThings.Server.Controllers
             {
                 return BadRequest(response);
             }
+            return Ok(response);
+        }
+
+        [HttpPost("profile")]
+        public async Task<ActionResult<ServiceResponse<string>>> Profile([FromBody] string newPassword)
+        {
+            var response = new ServiceResponse<string>();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _dataContext.User.FindAsync(Guid.Parse(userId));
+
+            if (user == null)
+            {
+                response.Data = "alert-danger";
+                response.Message = "User not found";
+                return BadRequest(response);
+            }
+            
+            CreatePasswordHash(newPassword, out byte[] passwordHash, out byte[] passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            await _dataContext.SaveChangesAsync();
+
+            response.Data = "alert-success";
+            response.Message = "Password changed successfully";
             return Ok(response);
         }
 
@@ -125,6 +152,5 @@ namespace LittleThings.Server.Controllers
 
             return jwt;
         }
-
     }
 }

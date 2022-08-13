@@ -22,6 +22,14 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/Category/CreateEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcQ3JlYXRlRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/Category/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/SocialMedia/CreateEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU29jaWFsTWVkaWFcQ3JlYXRlRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Auth/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Auth/Profile.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxQcm9maWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Auth/Register.razor]

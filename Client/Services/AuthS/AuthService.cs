@@ -29,5 +29,11 @@ namespace LittleThings.Client.Services.AuthS
         {
             return (await _authStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
         }
+
+        public async Task<ServiceResponse<string>> ChangePassword(ChangePassword request)
+        {
+            var result = await _http.PostAsJsonAsync("api/auth/profile", request.Password);
+            return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
+        }
     }
 }

@@ -78,6 +78,7 @@
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/social-media"))" class="dropdown-item">Social Media</a>
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/subcategory"))" class="dropdown-item">Sub Category</a>
+                                    <a @onclick="@(() => NavigationManager.NavigateTo("admin/category"))" class="dropdown-item">Category</a>
                                 </div>
                             </div>
                         }
@@ -92,6 +93,7 @@
                     else
                     {
                         <div class="navbar-nav ml-auto py-0">
+                            <a @onclick="@(() => NavigationManager.NavigateTo("profile"))" class="nav-item nav-link">Profile</a>
                             <a @onclick="Logout" class="nav-item nav-link">Logout</a>
                         </div>
                     }
