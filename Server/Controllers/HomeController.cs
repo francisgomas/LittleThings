@@ -22,5 +22,12 @@ namespace LittleThings.Server.Controllers
             var links = await _dataContext.SocialMedia.ToListAsync();
             return Ok(links);
         }
+
+        [HttpGet("categories")]
+        public async Task<ActionResult<List<Category>>> GetCategories()
+        {
+            var cats = await _dataContext.Category.ToListAsync();
+            return Ok(cats);
+        }
     }
 }

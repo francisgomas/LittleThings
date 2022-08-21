@@ -18,8 +18,6 @@ namespace LittleThings.Shared
         [ForeignKey(nameof(SubCategoryId))]
         public virtual SubCategory SubCategory { get; set; }
         [Required]
-        public Guid FileUploadId { get; set; }
-        [ForeignKey(nameof(FileUploadId))]
-        public virtual FileUpload FileUpload { get; set; }
+        public string ImageURL { get; set; }
     }
 }

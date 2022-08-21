@@ -15,8 +15,9 @@
                 <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
-                            <th>Icon</th>
-                            <th>Link</th>
+                            <th>Category</th>
+                            <th>Sub-Category</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -27,10 +28,11 @@
                            {
                                 <tr>
                                     <td class="align-middle">@cat.Name</td>
-                                    <td class="align-middle">@media.Link</td>
+                                    <td class="align-middle">@cat.SubCategory.Name</td>
+                                    <td class="align-middle"><img src="@cat.ImageURL" width="100px"/></td>
                                     <td class="align-middle">
-                                        <button class="btn btn-sm btn-primary" @onclick="(() => onEditSocialMedia(media.Id))" ><i class="fa fa-pen"></i></button>
-                                        <button class="btn btn-sm btn-danger" @onclick="(() => onDeleteSocialMedia(media.Id))"><i class="fa fa-times"></i></button>
+                                        <button class="btn btn-sm btn-primary" @onclick="(() => onEditCategory(cat.Id))" ><i class="fa fa-pen"></i></button>
+                                        <button class="btn btn-sm btn-danger" @onclick="(() => onDeleteCategory(cat.Id))"><i class="fa fa-times"></i></button>
                                     </td>
                                 </tr>
                            }
@@ -42,7 +44,7 @@
         </div>
         <div class="row px-xl-5">
             <div class="col-lg-4 col-sm-12">
-                <button class="btn btn-primary" @onclick="CreateSocialMedia"><i class="fa fa-plus"></i> Add Social Media</button>
+                <button class="btn btn-primary" @onclick="CreateCategory"><i class="fa fa-plus"></i> Add Category</button>
             </div>
         </div>
     </div> 
@@ -51,23 +53,23 @@
 @code{
     bool isAuthenticated = false;
     private string GetPageTitle() => "Category";
-    void onEditSocialMedia(int? id)
+    void onEditCategory(Guid? id)
     {
-        NavigationManager.NavigateTo($"admin/social-media/edit/{id}");
+        NavigationManager.NavigateTo($"admin/category/edit/{id}");
     }
 
-    private async Task onDeleteSocialMedia(int id)
+    private async Task onDeleteCategory(Guid id)
     {
-        await CategoryService.DeleteSocialMedia(id);
+        await CategoryService.DeleteCategory(id);
     }
 
     protected override async Task OnInitializedAsync()
     {
         isAuthenticated = await AuthService.IsUserAuthenticated();
-        await CategoryService.GetAdminSocialMedias();
+        await CategoryService.GetCategories();
     }
 
-    void CreateSocialMedia()
+    void CreateCategory()
     {
         NavigationManager.NavigateTo("admin/category/edit");
     }

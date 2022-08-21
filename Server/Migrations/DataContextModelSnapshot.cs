@@ -28,8 +28,9 @@ namespace LittleThings.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FileUploadId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -41,26 +42,18 @@ namespace LittleThings.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FileUploadId");
-
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Category");
-                });
 
-            modelBuilder.Entity("LittleThings.Shared.FileUpload", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("FileUpload");
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("05cb6b6b-3284-4c35-afd7-b51eb376b542"),
+                            ImageURL = "ss",
+                            Name = "Shirts",
+                            SubCategoryId = new Guid("649c4f84-1251-4e5b-98bd-b70d8bb724a1")
+                        });
                 });
 
             modelBuilder.Entity("LittleThings.Shared.Role", b =>
@@ -130,6 +123,13 @@ namespace LittleThings.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SubCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("649c4f84-1251-4e5b-98bd-b70d8bb724a1"),
+                            Name = "Mens"
+                        });
                 });
 
             modelBuilder.Entity("LittleThings.Shared.User", b =>
@@ -173,19 +173,11 @@ namespace LittleThings.Server.Migrations
 
             modelBuilder.Entity("LittleThings.Shared.Category", b =>
                 {
-                    b.HasOne("LittleThings.Shared.FileUpload", "FileUpload")
-                        .WithMany()
-                        .HasForeignKey("FileUploadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LittleThings.Shared.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("FileUpload");
 
                     b.Navigation("SubCategory");
                 });

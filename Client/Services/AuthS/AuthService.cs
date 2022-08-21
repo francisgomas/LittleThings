@@ -32,7 +32,7 @@ namespace LittleThings.Client.Services.AuthS
 
         public async Task<ServiceResponse<string>> ChangePassword(ChangePassword request)
         {
-            var result = await _http.PostAsJsonAsync("api/auth/profile", request.Password);
+            var result = await _http.PostAsJsonAsync("api/auth/change-password", request.Password);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
     }

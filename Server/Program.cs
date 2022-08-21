@@ -2,6 +2,7 @@ using LittleThings.Server.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +48,7 @@ else
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
+
 app.UseStaticFiles();
 
 app.UseRouting();

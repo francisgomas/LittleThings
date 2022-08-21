@@ -1,5 +1,102 @@
-﻿<h3>CreateEdit</h3>
+﻿@page "/admin/category/edit"
+@page "/admin/category/edit/{id:guid}"
+@inject ICategoryService CategoryService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
 
-@code {
+<PageTitle>@GetPageTitle()</PageTitle>
 
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <EditForm Model="cat" OnValidSubmit="onSubmit">
+                    <DataAnnotationsValidator />
+                    <div class="control-group mb-3">
+                        <label>Category Name</label>
+                        <input type="text" class="form-control" id="category" placeholder="Enter category name" @bind-value="cat.Name">
+                        <ValidationMessage For="@(() => cat.Name)" />
+                    </div>
+                     <div class="control-group mb-3">
+                        <label>SubCategory Name </label>
+                        <InputSelect @bind-Value="cat.SubCategoryId" class="form-control">
+                            @foreach (var c in CategoryService.SubCategories)
+                            {
+                                <option value="@c.Id">@c.Name</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => cat.SubCategoryId)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <InputFile OnChange="onFileChange"></InputFile>
+                        <ValidationMessage For="@(() => cat.ImageURL)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        @if (cat.ImageURL != null)
+                        {
+                            <img src="@cat.ImageURL" />
+                        }
+                    </div>
+                    <div>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="@btnText" />
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/category"))">Go Back </button>
+                    </div>
+                </EditForm>
+
+        </div>
+    </div>
+</div>
+}
+
+@code{
+    [Parameter]
+    public Guid? id { get; set; }
+    bool isAuthenticated = false;
+    string btnText = string.Empty;
+    private string GetPageTitle() => "Category";
+    Category cat = new Category { SubCategory = new SubCategory()};
+
+    async Task onFileChange(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var resizedFile = await file.RequestImageFileAsync(file.ContentType, 500, 400);
+        var buffer = new byte[resizedFile.Size];
+        await resizedFile.OpenReadStream().ReadAsync(buffer);
+        cat.ImageURL = $"data:image/png;base64,{Convert.ToBase64String(buffer)}";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CategoryService.GetSubCategories();
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        btnText = id == null ? "Create Category" : "Update Category";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != null)
+        {
+            cat = await CategoryService.GetSingleCategory((Guid)id);
+        } 
+        else
+        {
+            cat.SubCategory = CategoryService.SubCategories[0];
+            cat.SubCategoryId = cat.SubCategory.Id;
+        }
+    }
+
+    async Task onSubmit()
+    {
+        if (id != null)
+        {
+            await CategoryService.UpdateCategory(cat);
+        }
+        else
+        {
+            await CategoryService.CreateCategory(cat);
+        }
+    }
 }

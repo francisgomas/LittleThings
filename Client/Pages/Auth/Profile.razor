@@ -1,4 +1,4 @@
-﻿@page "/profile"
+﻿@page "/change-password"
 @inject IAuthService AuthService
 @attribute [Authorize]
 
@@ -41,7 +41,7 @@
 @code{
     ChangePassword request = new ChangePassword();
     private string data, message = string.Empty;
-    private string GetPageTitle() => "Profile";
+    private string GetPageTitle() => "Change Password";
     bool isAuthenticated = false;
 
     private async Task onChangePassword()
