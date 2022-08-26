@@ -18,6 +18,8 @@ namespace LittleThings.Shared
         [ForeignKey(nameof(SubCategoryId))]
         public virtual SubCategory SubCategory { get; set; }
         [Required]
+        public string LinkUrl { get; set; }
+        [Required]
         public string ImageURL { get; set; }
     }
 }

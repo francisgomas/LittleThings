@@ -17,6 +17,7 @@
                         <tr>
                             <th>Category</th>
                             <th>Sub-Category</th>
+                            <th>URL</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
@@ -29,6 +30,7 @@
                                 <tr>
                                     <td class="align-middle">@cat.Name</td>
                                     <td class="align-middle">@cat.SubCategory.Name</td>
+                                    <td class="align-middle">@cat.LinkUrl</td>
                                     <td class="align-middle"><img src="@cat.ImageURL" width="100px"/></td>
                                     <td class="align-middle">
                                         <button class="btn btn-sm btn-primary" @onclick="(() => onEditCategory(cat.Id))" ><i class="fa fa-pen"></i></button>

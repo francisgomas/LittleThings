@@ -8,6 +8,7 @@ using Blazored.LocalStorage;
 using BlazorEcommerce.Client;
 using LittleThings.Client.Services.SubCategoryS;
 using LittleThings.Client.Services.CategoryS;
+using LittleThings.Client.Services.ProductS;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -20,6 +21,7 @@ builder.Services.AddScoped<ISocialMediaService, SocialMediaService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 builder.Services.AddOptions();

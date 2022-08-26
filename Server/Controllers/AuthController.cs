@@ -83,12 +83,44 @@ namespace LittleThings.Server.Controllers
             return Ok(response);
         }
 
+        public async Task<ServiceResponse<Guid>> UserExists(string email, string username)
+        {
+            var response = string.Empty;
+            var boolResp = bool.Equals(response, false);
+            if (await _dataContext.User.AnyAsync(user => user.Email.ToLower().Equals(email.ToLower())))
+            {
+                response = "Email already exists";
+            }
+            else if (await _dataContext.User.AnyAsync(user => user.Username.ToLower().Equals(username.ToLower())))
+            {
+                response = "User already exists";
+            }
+            else
+            {
+                boolResp = !boolResp;
+            }
+            return new ServiceResponse<Guid>
+            {
+                Success = boolResp,
+                Message = response
+            };
+        }
+
         [HttpPost("register")]
         public async Task<ActionResult<ServiceResponse<Guid>>> Register(UserRegister request)
         {
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
-
+            var response = new ServiceResponse<Guid>();
+            response = await UserExists(request.Email, request.Username);
+            if (!response.Success)
+            {
+                return new ServiceResponse<Guid>
+                {
+                    Success = response.Success,
+                    Message = response.Message
+                };
+            }
             var user = new User();
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.Name = request.Name;
             user.Email = request.Email;
@@ -100,13 +132,13 @@ namespace LittleThings.Server.Controllers
             _dataContext.User.Add(user);
             await _dataContext.SaveChangesAsync();
 
-            var response = new ServiceResponse<Guid> { Data = user.Id, Message = "Registration successful!" };
-            if (!response.Success)
+            var resp = new ServiceResponse<Guid> { Data = user.Id, Message = "Registration successful!" };
+            if (!resp.Success)
             {
-                return BadRequest(response);
+                return BadRequest(resp);
             }
 
-            return Ok(response);
+            return Ok(resp);
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

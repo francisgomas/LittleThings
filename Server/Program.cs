@@ -21,13 +21,27 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
+            ValidateLifetime = true,
             IssuerSigningKey =
                 new SymmetricSecurityKey(System.Text.Encoding.UTF8
                 .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
             ValidateIssuer = false,
-            ValidateAudience = false
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                {
+                    context.Response.Headers.Add("Token-Expired", "true");
+                }
+                return Task.CompletedTask;
+            }
         };
     });
+
 builder.Services.AddHttpContextAccessor();
 
 

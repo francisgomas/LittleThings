@@ -31,6 +31,11 @@
                         <ValidationMessage For="@(() => cat.SubCategoryId)" />
                     </div>
                     <div class="control-group mb-3">
+                        <label>Link URL</label>
+                        <input type="text" class="form-control" id="link" placeholder="Enter link" @bind-value="cat.LinkUrl">
+                        <ValidationMessage For="@(() => cat.LinkUrl)" />
+                    </div>
+                    <div class="control-group mb-3">
                         <InputFile OnChange="onFileChange"></InputFile>
                         <ValidationMessage For="@(() => cat.ImageURL)" />
                     </div>

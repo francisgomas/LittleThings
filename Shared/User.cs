@@ -23,7 +23,5 @@ namespace LittleThings.Shared
         public int RoleId { get; set; }
         [ForeignKey(nameof(RoleId))]
         public virtual Role Role { get; set; }
-        
-
     }
 }

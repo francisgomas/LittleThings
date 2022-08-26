@@ -47,14 +47,17 @@ namespace LittleThings.Server.Data
                    Id = Guid.NewGuid(),
                    Name = "Shirts",
                    SubCategoryId = guid,
+                   LinkUrl = "shirts",
                    ImageURL = "ss"
                }
-            );
+            ); ;
         }
         public DbSet<Category> Category { get; set; }
         public DbSet<SocialMedia> SocialMedia { get; set; }
         public DbSet<SubCategory> SubCategory { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<CartItem> CartItem { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

@@ -50,7 +50,7 @@ namespace LittleThings.Client.Services.CategoryS
             var result = await _httpClient.GetFromJsonAsync<List<Category>>("api/home/categories");
             if (result != null)
             {
-                Categories = result.Take(6).ToList();
+                Categories = result.Take(8).ToList();
             }
         }
 

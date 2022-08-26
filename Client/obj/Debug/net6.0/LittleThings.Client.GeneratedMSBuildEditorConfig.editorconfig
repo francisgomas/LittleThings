@@ -30,6 +30,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ2F0ZWdvcnlcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/Product/CreateEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUHJvZHVjdFxDcmVhdGVFZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/Product/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUHJvZHVjdFxJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/Product/View.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUHJvZHVjdFxWaWV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Gomas/Documents/Projects/NET_Core/LittleThings/Client/Pages/Admin/SocialMedia/CreateEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU29jaWFsTWVkaWFcQ3JlYXRlRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

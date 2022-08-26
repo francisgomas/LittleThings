@@ -22,6 +22,32 @@ namespace LittleThings.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("LittleThings.Shared.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CartItem");
+                });
+
             modelBuilder.Entity("LittleThings.Shared.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -29,6 +55,10 @@ namespace LittleThings.Server.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -49,11 +79,70 @@ namespace LittleThings.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("05cb6b6b-3284-4c35-afd7-b51eb376b542"),
+                            Id = new Guid("f27b533a-0735-4e0d-84b3-f4d0962c885c"),
                             ImageURL = "ss",
+                            LinkUrl = "shirts",
                             Name = "Shirts",
-                            SubCategoryId = new Guid("649c4f84-1251-4e5b-98bd-b70d8bb724a1")
+                            SubCategoryId = new Guid("ebba7362-a18c-4800-b0a1-6ccc31a0f204")
                         });
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Featured")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("LittleThings.Shared.Role", b =>
@@ -127,7 +216,7 @@ namespace LittleThings.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("649c4f84-1251-4e5b-98bd-b70d8bb724a1"),
+                            Id = new Guid("ebba7362-a18c-4800-b0a1-6ccc31a0f204"),
                             Name = "Mens"
                         });
                 });
@@ -171,6 +260,25 @@ namespace LittleThings.Server.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("LittleThings.Shared.CartItem", b =>
+                {
+                    b.HasOne("LittleThings.Shared.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LittleThings.Shared.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("LittleThings.Shared.Category", b =>
                 {
                     b.HasOne("LittleThings.Shared.SubCategory", "SubCategory")
@@ -182,6 +290,24 @@ namespace LittleThings.Server.Migrations
                     b.Navigation("SubCategory");
                 });
 
+            modelBuilder.Entity("LittleThings.Shared.Image", b =>
+                {
+                    b.HasOne("LittleThings.Shared.Product", null)
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.Product", b =>
+                {
+                    b.HasOne("LittleThings.Shared.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("LittleThings.Shared.User", b =>
                 {
                     b.HasOne("LittleThings.Shared.Role", "Role")
@@ -191,6 +317,11 @@ namespace LittleThings.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.Product", b =>
+                {
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }
