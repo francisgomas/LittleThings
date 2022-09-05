@@ -17,6 +17,9 @@ namespace LittleThings.Client.Services.CartS
             _navigationManager = navigationManager;
             _authService = authService;
         }
+
+        public event Action OnChange;
+
         public async Task AddToCart(CartItem cartItem)
         {
             if (await _authService.IsUserAuthenticated())
@@ -61,7 +64,7 @@ namespace LittleThings.Client.Services.CartS
                 await _localStorage.SetItemAsync<int>("cartItemsCount", cart != null ? cart.Count : 0);
             }
 
-            //OnChange.Invoke();
+            OnChange.Invoke();
         }
     }
 }

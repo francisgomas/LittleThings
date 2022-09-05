@@ -201,14 +201,14 @@
       "netstandard.dll": "sha256-HhuK9zDkd1N7hODAEiNJ11VF8T54IgrM6hZfLHmHdqM=",
       "System.Private.CoreLib.dll": "sha256-dXaTqyg1PnXPiSwywpic1PVrd7P8Vb5tN0i0\/urdt3E=",
       "LittleThings.Shared.dll": "sha256-D4ks9e5DP6jWQPe7tmLxKJuPquHRrUVFV4qNwuC14xM=",
-      "LittleThings.Client.dll": "sha256-4jV+e6SCvs7325FltmlN3GmzHo\/EO23cDon2TsWMkLE="
+      "LittleThings.Client.dll": "sha256-4li+qvpOVXtZiwkD3gHR7SiD99nQZRGtQIYk7xjUAgc="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "LittleThings.Shared.pdb": "sha256-89L6e4H0b6hh\/X63rWTBhkiflHU0OsSzqP6Svg+bnOM=",
-      "LittleThings.Client.pdb": "sha256-t3jBf\/U4Y\/01Hx03Bbua+fR3HjwmL75J6XTFDUGGN5U="
+      "LittleThings.Client.pdb": "sha256-n5Y4NXFpOovfGOC+QRJnk\/WIT0b0IWZW8RNenA5FNHY="
     },
     "runtime": {
       "dotnet.6.0.8.gcsdh8ecnp.js": "sha256-WT60vnXnQtCNURE40qo+XSL1o4iYFvABy0NVaFhm7MI=",

@@ -34,7 +34,5 @@ namespace LittleThings.Client.Services.AuthS
             var result = await _http.PostAsJsonAsync("api/auth/change-password", request.Password);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
-
-        public int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
     }
 }
