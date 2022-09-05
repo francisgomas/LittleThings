@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3lgojx3o0vgQ/kpHQ0BVSGwMeknTnXRrJeTDW+cx9pM=",
+  "Hash": "KmhGmj0QWnndWNTjO+13i+iE30uirbIwXseMcK/stHs=",
   "Source": "LittleThings.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -119,6 +119,23 @@
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.8\\runtimes\\browser-wasm\\native\\dotnet.wasm"
     },
     {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt.dat",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt.dat",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "native",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.8\\runtimes\\browser-wasm\\native\\icudt.dat"
+    },
+    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt_CJK.dat",
       "SourceId": "LittleThings.Client",
       "SourceType": "Computed",
@@ -168,23 +185,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.8\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
-    },
-    {
-      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\icudt.dat",
-      "SourceId": "LittleThings.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt.dat",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "BlazorWebAssemblyResource",
-      "AssetTraitValue": "native",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\Gomas\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\6.0.8\\runtimes\\browser-wasm\\native\\icudt.dat"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\LittleThings.Client.dll",
@@ -7106,23 +7106,6 @@
       "OriginalItemSpec": "wwwroot\\css\\fonts.css"
     },
     {
-      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "LittleThings.Client",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
-    },
-    {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "LittleThings.Client",
       "SourceType": "Discovered",
@@ -7223,6 +7206,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "LittleThings.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\Gomas\\Documents\\Projects\\NET_Core\\LittleThings\\Client\\wwwroot\\css\\open-iconic\\ICON-LICENSE",

@@ -1,5 +1,96 @@
-﻿<h3>View</h3>
+﻿@page "/admin/product/view"
+@page "/admin/product/view/{id:guid}"
+@using System.Net.Http.Headers
+@inject IProductService ProductService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
 
-@code {
+<PageTitle>@GetPageTitle()</PageTitle>
 
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <EditForm Model="prod">
+                    <div class="control-group mb-3">
+                        <label>Product Title</label>
+                        <input type="text" class="form-control" id="prodTitle" placeholder="Enter product title" @bind-value="prod.Title" readonly>
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Product Description</label>
+                        <input type="text" class="form-control" id="prodDescription" placeholder="Enter product description" @bind-value="prod.Description" readonly/>
+                    </div>
+                     <div class="control-group mb-3">
+                        <label>Featured Item?</label><br/>
+                        @if (prod.Featured)
+                        {
+                             <input type="text" class="form-control" id="prodFeatured" value="Yes" readonly/>
+                        }
+                        else
+                        {
+                             <input type="text" class="form-control" id="prodFeatured" value="No" readonly/>
+                        }
+                    </div>
+                     <div class="control-group mb-3">
+                        <label>Category Name </label>
+                        <InputSelect @bind-Value="prod.CategoryId" class="form-control" readonly>
+                            @foreach (var c in ProductService.Categories)
+                            { 
+                                <option value="@c.Id">@c.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Image </label><br/>
+                         @if (prod.Image != null)
+                        {
+                            <img src="@prod.Image" />
+                        }
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Original Price</label>
+                        <InputNumber class="form-control" placeholder="Enter original price" @bind-Value="prod.OriginalPrice" readonly></InputNumber>
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Discounted Price</label>
+                        <InputNumber class="form-control" placeholder="Enter original price" @bind-Value="prod.Price" readonly></InputNumber>
+                    </div>
+                    <div>
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/product"))">Go Back </button>
+                    </div>
+                </EditForm>
+
+        </div>
+    </div>
+</div>
+}
+
+@code{
+    [Parameter]
+    public Guid? id { get; set; }
+    bool isAuthenticated = false;
+    private string GetPageTitle() => "Product";
+    Product prod = new Product { Category = new Category() };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ProductService.GetCategories();
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != null)
+        {
+            prod = await ProductService.GetSingleProduct((Guid)id);
+        } 
+        else
+        {
+            prod.Category = ProductService.Categories[0];
+            prod.CategoryId = prod.Category.Id;
+        }
+    }
 }

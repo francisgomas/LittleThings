@@ -1,0 +1,9 @@
+﻿@page "/product"
+@page "/product/{id:guid}"
+
+<PageTitle>View Product</PageTitle>
+
+@code {
+    [Parameter]
+    public Guid? id { get; set; }
+}

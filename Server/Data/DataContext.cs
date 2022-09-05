@@ -30,28 +30,15 @@ namespace LittleThings.Server.Data
                 }
             );
 
-            var guid = Guid.NewGuid();
-            var guid_file = Guid.NewGuid();
-
             modelBuilder.Entity<SubCategory>().HasData(
                new SubCategory
                {
-                   Id = guid,
+                   Id = Guid.NewGuid(),
                    Name = "Mens",
                }
             );
-
-            modelBuilder.Entity<Category>().HasData(
-               new Category
-               {
-                   Id = Guid.NewGuid(),
-                   Name = "Shirts",
-                   SubCategoryId = guid,
-                   LinkUrl = "shirts",
-                   ImageURL = "ss"
-               }
-            ); ;
         }
+
         public DbSet<Category> Category { get; set; }
         public DbSet<SocialMedia> SocialMedia { get; set; }
         public DbSet<SubCategory> SubCategory { get; set; }

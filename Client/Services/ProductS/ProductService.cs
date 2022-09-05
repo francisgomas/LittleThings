@@ -1,37 +1,84 @@
-﻿namespace LittleThings.Client.Services.ProductS
+﻿using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
+
+namespace LittleThings.Client.Services.ProductS
 {
     public class ProductService : IProductService
     {
-        public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; } = new List<Product>();
+        public List<Category> Categories { get; set; } = new List<Category>();
 
-        public Task CreateProduct(Product prod)
+        private readonly HttpClient _httpClient;
+        private readonly NavigationManager _navigationManager;
+
+        public ProductService(HttpClient httpClient, NavigationManager navigationManager)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient;
+            _navigationManager = navigationManager;
+        }
+        public async Task CreateProduct(Product prod)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/product", prod);
+            if (response.IsSuccessStatusCode)
+            {
+                await GetProducts();
+                _navigationManager.NavigateTo("admin/product");
+            }
         }
 
-        public Task DeleteProduct(Guid id)
+        public async Task DeleteProduct(Guid id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.DeleteAsync($"api/product/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                await GetProducts();
+            }
         }
 
-        public Task GetHomeProducts()
+        public async Task GetCategories()
         {
-            throw new NotImplementedException();
+            var result = await _httpClient.GetFromJsonAsync<List<Category>>("api/category");
+            if (result != null)
+            {
+                Categories = result;
+            }
         }
 
-        public Task GetProducts()
+        public async Task GetHomeProducts()
         {
-            throw new NotImplementedException();
+            var result = await _httpClient.GetFromJsonAsync<List<Product>>("api/home/products");
+            if (result != null)
+            {
+                Products = result.Take(12).ToList(); ;
+            }
         }
 
-        public Task<Product> GetSingleProduct(Guid id)
+        public async Task GetProducts()
         {
-            throw new NotImplementedException();
+            var result = await _httpClient.GetFromJsonAsync<List<Product>>("api/product");
+            if (result != null)
+            {
+                Products = result;
+            }            
         }
 
-        public Task UpdateProduct(Product prod)
+        public async Task<Product> GetSingleProduct(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await _httpClient.GetFromJsonAsync<Product>($"api/product/{id}");
+            if (result != null){
+                return result;
+            }
+            return new Product();
+        }
+
+        public async Task UpdateProduct(Product prod)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/product/{prod.Id}", prod);
+            if (response.IsSuccessStatusCode)
+            {
+                await GetProducts();
+                _navigationManager.NavigateTo("admin/product");
+            }
         }
     }
 }

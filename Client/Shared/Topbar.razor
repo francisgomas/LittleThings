@@ -60,6 +60,7 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a @onclick="@(() => NavigationManager.NavigateTo("/"))" class="nav-item nav-link active">Home</a>
                         <a @onclick="@(() => NavigationManager.NavigateTo("/shop"))" class="nav-item nav-link">Shop</a>
+                        
                         @if (!isAdminAuth)
                         {
                             <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
@@ -79,6 +80,7 @@
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/social-media"))" class="dropdown-item">Social Media</a>
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/subcategory"))" class="dropdown-item">Sub Category</a>
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/category"))" class="dropdown-item">Category</a>
+                                    <a @onclick="@(() => NavigationManager.NavigateTo("admin/product"))" class="dropdown-item">Product</a>
                                 </div>
                             </div>
                         }

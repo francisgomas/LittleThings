@@ -75,38 +75,6 @@ namespace LittleThings.Server.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("f27b533a-0735-4e0d-84b3-f4d0962c885c"),
-                            ImageURL = "ss",
-                            LinkUrl = "shirts",
-                            Name = "Shirts",
-                            SubCategoryId = new Guid("ebba7362-a18c-4800-b0a1-6ccc31a0f204")
-                        });
-                });
-
-            modelBuilder.Entity("LittleThings.Shared.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("LittleThings.Shared.Product", b =>
@@ -127,6 +95,10 @@ namespace LittleThings.Server.Migrations
 
                     b.Property<bool>("Featured")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("OriginalPrice")
                         .HasColumnType("decimal(18,2)");
@@ -216,7 +188,7 @@ namespace LittleThings.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ebba7362-a18c-4800-b0a1-6ccc31a0f204"),
+                            Id = new Guid("d0a40596-4ad1-4e7f-bda3-3997f2673548"),
                             Name = "Mens"
                         });
                 });
@@ -290,13 +262,6 @@ namespace LittleThings.Server.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("LittleThings.Shared.Image", b =>
-                {
-                    b.HasOne("LittleThings.Shared.Product", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("LittleThings.Shared.Product", b =>
                 {
                     b.HasOne("LittleThings.Shared.Category", "Category")
@@ -317,11 +282,6 @@ namespace LittleThings.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("LittleThings.Shared.Product", b =>
-                {
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

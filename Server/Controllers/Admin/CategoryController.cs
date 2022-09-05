@@ -59,7 +59,6 @@ namespace LittleThings.Server.Controllers.Admin
             category.Id = cat.Id;
             category.Name = cat.Name;
             category.SubCategoryId = cat.SubCategoryId;
-            category.LinkUrl = cat.LinkUrl;
             category.ImageURL = cat.ImageURL;
 
             await _dataContext.SaveChangesAsync();

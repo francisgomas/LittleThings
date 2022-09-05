@@ -82,7 +82,7 @@ namespace LittleThings.Server.Controllers
             response.Message = "Password changed successfully";
             return Ok(response);
         }
-
+        [HttpGet]
         public async Task<ServiceResponse<Guid>> UserExists(string email, string username)
         {
             var response = string.Empty;

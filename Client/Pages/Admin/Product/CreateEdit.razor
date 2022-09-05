@@ -1,5 +1,127 @@
-﻿<h3>CreateEdit</h3>
+﻿@page "/admin/product/edit"
+@page "/admin/product/edit/{id:guid}"
+@using System.Net.Http.Headers
+@inject IProductService ProductService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = "Admin")]
 
-@code {
+<PageTitle>@GetPageTitle()</PageTitle>
 
+@if (isAuthenticated)
+{
+    <Header Value="@GetPageTitle()"/>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-12 mb-5">
+                <EditForm Model="prod" OnValidSubmit="onSubmit">
+                    <DataAnnotationsValidator />
+                    <div class="control-group mb-3">
+                        <label>Product Title</label>
+                        <input type="text" class="form-control" id="prodTitle" placeholder="Enter product title" @bind-value="prod.Title">
+                        <ValidationMessage For="@(() => prod.Title)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Product Description</label>
+                        <input type="text" class="form-control" id="prodDescription" placeholder="Enter product description" @bind-value="prod.Description" />
+                        <ValidationMessage For="@(() => prod.Description)" />
+                    </div>
+                     <div class="control-group mb-3">
+                        <label>Featured Item?</label><br/>
+                         <InputRadioGroup class="form-control" Name="isFeatured" @bind-Value="@prod.Featured">
+                            <InputRadio Name="isFeatured" Value="@true" /> Yes<br/>
+                            <InputRadio Name="isFeatured" Value="@false" /> No
+                        </InputRadioGroup>
+                        <ValidationMessage For="@(() => prod.Featured)" />
+                    </div>
+                     <div class="control-group mb-3">
+                        <label>Category Name </label>
+                        <InputSelect @bind-Value="prod.CategoryId" class="form-control">
+                            @foreach (var c in ProductService.Categories)
+                            {
+                                <option value="@c.Id">@c.Name</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => prod.CategoryId)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Upload Image</label>
+                        <InputFile OnChange="onFileChange"></InputFile>
+                        <ValidationMessage For="@(() => prod.Image)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        @if (prod.Image != null)
+                        {
+                            <img src="@prod.Image" />
+                        }
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Original Price</label>
+                        <InputNumber class="form-control" placeholder="Enter original price" @bind-Value="prod.OriginalPrice" ></InputNumber>
+                        <ValidationMessage For="@(() => prod.OriginalPrice)" />
+                    </div>
+                    <div class="control-group mb-3">
+                        <label>Discounted Price</label>
+                        <InputNumber class="form-control" placeholder="Enter original price" @bind-Value="prod.Price" ></InputNumber>
+                        <ValidationMessage For="@(() => prod.Price)" />
+                    </div>
+                    <div>
+                        <input class="btn btn-primary py-2 px-5" type="submit" value="@btnText" />
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/product"))">Go Back </button>
+                    </div>
+                </EditForm>
+
+        </div>
+    </div>
+</div>
+}
+
+@code{
+    [Parameter]
+    public Guid? id { get; set; }
+    bool isAuthenticated = false;
+    string btnText = string.Empty;
+    private string GetPageTitle() => "Product";
+    Product prod = new Product { Category = new Category()};
+
+    async Task onFileChange(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var resizedFile = await file.RequestImageFileAsync(file.ContentType, 500, 400);
+        var buffer = new byte[resizedFile.Size];
+        await resizedFile.OpenReadStream().ReadAsync(buffer);
+        prod.Image = $"data:image/png;base64,{Convert.ToBase64String(buffer)}";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ProductService.GetCategories();
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        btnText = id == null ? "Create Product" : "Update Product";
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (id != null)
+        {
+            prod = await ProductService.GetSingleProduct((Guid)id);
+        } 
+        else
+        {
+            prod.Category = ProductService.Categories[0];
+            prod.CategoryId = prod.Category.Id;
+        }
+    }
+
+    async Task onSubmit()
+    {
+        if (id != null)
+        {
+            await ProductService.UpdateProduct(prod);
+        }
+        else
+        {
+            await ProductService.CreateProduct(prod);
+        }
+    }
 }

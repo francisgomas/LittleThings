@@ -29,5 +29,13 @@ namespace LittleThings.Server.Controllers
             var cats = await _dataContext.Category.ToListAsync();
             return Ok(cats);
         }
+
+        [HttpGet("products")]
+        public async Task<ActionResult<List<Product>>> GetProducts()
+        {
+            var prods = await _dataContext.Product
+                   .Where(u => u.Featured == true).ToListAsync();
+            return Ok(prods);
+        }
     }
 }

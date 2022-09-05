@@ -16,7 +16,7 @@ namespace LittleThings.Shared
         public string Name { get; set; }
         public Guid SubCategoryId { get; set; }
         [ForeignKey(nameof(SubCategoryId))]
-        public virtual SubCategory SubCategory { get; set; }
+        public virtual SubCategory? SubCategory { get; set; }
         [Required]
         public string LinkUrl { get; set; }
         [Required]

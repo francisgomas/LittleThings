@@ -16,10 +16,9 @@
                     <thead class="bg-secondary text-dark">
                         <tr>
                             <th>Title</th>
-                            <th>Description</th>
                             <th>Category</th>
-                            <th>Image</th>
                             <th>Featured</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -30,25 +29,24 @@
                            {
                                 <tr>
                                     <td class="align-middle">@prod.Title</td>
-                                    <td class="align-middle">@prod.Description</td>
                                     <td class="align-middle">@prod.Category.Name</td>
-                                    <td class="align-middle"><img src="@prod.Images" width="100px"/></td>
                                     <td class="align-middle">@prod.Featured</td>
+                                    <td class="align-middle"><img src="@prod.Image" width="150px"/></td>
                                     <td class="align-middle">
+                                        <button class="btn btn-sm btn-secondary" @onclick="(() => onViewProduct(prod.Id))" ><i class="fa fa-eye"></i></button>
                                         <button class="btn btn-sm btn-primary" @onclick="(() => onEditProduct(prod.Id))" ><i class="fa fa-pen"></i></button>
                                         <button class="btn btn-sm btn-danger" @onclick="(() => onDeleteProduct(prod.Id))"><i class="fa fa-times"></i></button>
                                     </td>
                                 </tr>
                            }
                         }
-                       
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row px-xl-5">
             <div class="col-lg-4 col-sm-12">
-                <button class="btn btn-primary" @onclick="CreateProduct"><i class="fa fa-plus"></i> Add Category</button>
+                <button class="btn btn-primary" @onclick="CreateProduct"><i class="fa fa-plus"></i> Add Product</button>
             </div>
         </div>
     </div> 
@@ -60,6 +58,11 @@
     void onEditProduct(Guid? id)
     {
         NavigationManager.NavigateTo($"admin/product/edit/{id}");
+    }
+
+    void onViewProduct(Guid? id)
+    {
+        NavigationManager.NavigateTo($"admin/product/view/{id}");
     }
 
     private async Task onDeleteProduct(Guid id)

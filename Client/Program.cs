@@ -9,6 +9,7 @@ using BlazorEcommerce.Client;
 using LittleThings.Client.Services.SubCategoryS;
 using LittleThings.Client.Services.CategoryS;
 using LittleThings.Client.Services.ProductS;
+using LittleThings.Client.Services.CartS;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -22,7 +23,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-
+builder.Services.AddScoped<ICartService, CartService>();
 
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
