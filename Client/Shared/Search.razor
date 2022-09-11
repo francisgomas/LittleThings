@@ -1,18 +1,62 @@
-﻿ <div class="col-lg-6 col-6 text-left">
-    <form action="">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for products">
-            <div class="input-group-append">
-                <span class="input-group-text bg-transparent text-primary">
-                    <i class="fa fa-search"></i>
-                </span>
-            </div>
+﻿@inject NavigationManager NavigationManager
+@inject IHomeService HomeService
+
+<div class="col-lg-6 col-6 text-left">
+    <div class="input-group">
+        <input list="results" type="search" class="form-control" 
+            @bind-value="searchText"
+            @bind-value:event="oninput"
+            @onkeyup="HandleSearch"
+            @ref="searchInput"
+            placeholder="Search for products" />
+            <datalist id="results">
+                @foreach (var suggestion in suggestions)
+                {
+                    <option>@suggestion</option>
+                }
+            </datalist>
+            
+        <div class="input-group-append">
+            <span class="input-group-text bg-transparent text-primary" @onclick="SearchProducts">
+                <i class="fa fa-search"></i>
+            </span>
         </div>
-    </form>
+    </div>
 </div>
 <div class="col-lg-3 col-6 text-right">
-    <a href="" class="btn border">
+    <a @onclick="@(() => NavigationManager.NavigateTo("cart"))" class="btn border">
         <i class="fas fa-shopping-cart text-primary"></i>
         <span class="badge">0</span>
     </a>
 </div>
+
+@code {
+    private string searchText = string.Empty;
+    private List<string> suggestions = new List<string>();
+    protected ElementReference searchInput;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await searchInput.FocusAsync();
+        }
+    }
+
+    public void SearchProducts()
+    {
+        NavigationManager.NavigateTo($"search/{searchText}/1");
+    }
+
+    public async Task HandleSearch(KeyboardEventArgs args)
+    {
+        if (args.Key == null || args.Key.Equals("Enter"))
+        {
+            SearchProducts();
+        }
+        else if (searchText != string.Empty)
+        {
+            suggestions = await HomeService.GetProductSearchSuggestions(searchText);
+        }
+    }
+}

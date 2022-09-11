@@ -1,7 +1,7 @@
 ﻿@page "/"
-@inject ICategoryService CategoryService
-@inject IProductService ProductService
+@inject IHomeService HomeService
 @inject ICartService CartService
+@inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Home Page</PageTitle>
@@ -44,12 +44,12 @@
 <!-- Categories Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5 pb-3">
-        @foreach (var item in CategoryService.Categories)
+        @foreach (var item in HomeService.Categories)
        {
             <div class="col-lg-3 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <p class="text-right"></p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                    <a @onclick="@(() => NavigationManager.NavigateTo("category/"+@item.Id))" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="@item.ImageURL" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">@item.Name</h5>
@@ -66,10 +66,10 @@
         <h2 class="section-title px-5"><span class="px-2">Featured Products</span></h2>
     </div>
     
-    @if (ProductService.Products.Count > 0)
+    @if (HomeService.Products.Count > 0)
     {
         <div class="row px-xl-5 pb-3">
-            @foreach (var prod in ProductService.Products)
+            @foreach (var prod in HomeService.Products)
             {
                 <div class="col-lg-2 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
@@ -91,8 +91,8 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" onclick="@(() => NavigationManager.NavigateTo("product/" + prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" @onclick="(() => AddToCart(prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                            <a onclick="@(() => NavigationManager.NavigateTo("product/"+prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <a @onclick="(() => AddToCart(prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -109,8 +109,8 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await CategoryService.GetHomeCategories();
-        await ProductService.GetHomeProducts();
+        await HomeService.GetHomeCategories();
+        await HomeService.GetHomeProducts();
     }
 
     private async Task AddToCart(Guid id)
@@ -118,6 +118,7 @@
         var cartItem = new CartItem
         {
             ProductId = id,
+            Quantity = 1,
         };
 
         await CartService.AddToCart(cartItem);

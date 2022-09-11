@@ -38,28 +38,27 @@ namespace LittleThings.Client.Services.ProductS
         public async Task GetCategories()
         {
             var result = await _httpClient.GetFromJsonAsync<List<Category>>("api/category");
-            if (result != null)
+            if (result.Count > 0)
             {
                 Categories = result;
             }
-        }
-
-        public async Task GetHomeProducts()
-        {
-            var result = await _httpClient.GetFromJsonAsync<List<Product>>("api/home/products");
-            if (result != null)
+            else
             {
-                Products = result.Take(12).ToList(); ;
+                Categories.Clear();
             }
         }
 
         public async Task GetProducts()
         {
             var result = await _httpClient.GetFromJsonAsync<List<Product>>("api/product");
-            if (result != null)
+            if (result.Count > 0)
             {
                 Products = result;
-            }            
+            }  
+            else
+            {
+                Products.Clear();
+            }
         }
 
         public async Task<Product> GetSingleProduct(Guid id)
@@ -80,5 +79,7 @@ namespace LittleThings.Client.Services.ProductS
                 _navigationManager.NavigateTo("admin/product");
             }
         }
+
+        
     }
 }

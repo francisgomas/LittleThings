@@ -15,31 +15,37 @@ namespace LittleThings.Client.Services.SocialMediaS
             _httpClient = http;
             _navigationManager = navigationManager;
         }
-        public async Task GetSocialMedias()
-        {
-            var result = await _httpClient.GetFromJsonAsync<List<SocialMedia>>("api/home/socialmedia");
-            SocialMedias = result;
-        }
 
         public async Task DeleteSocialMedia(int id)
         {
             var response = await _httpClient.DeleteAsync($"api/socialmedia/{id}");
             if (response.IsSuccessStatusCode)
             {
-                await GetSocialMedias();
+                await GetAdminSocialMedias();
             }
         }
 
         public async Task GetAdminSocialMedias()
         {
             var result = await _httpClient.GetFromJsonAsync<List<SocialMedia>>("api/socialmedia");
-            SocialMedias = result;
+            if (result.Count > 0)
+            {
+                SocialMedias = result;
+            }
+            else
+            {
+                SocialMedias.Clear();
+            }
         }
 
         public async Task<SocialMedia> GetSingleSocialMedia(int id)
         {
             var result = await _httpClient.GetFromJsonAsync<SocialMedia>($"api/socialmedia/{id}");
-            return result;
+            if (result != null)
+            {
+                return result;
+            }
+            return new SocialMedia();
         }
 
         public async Task UpdateSocialMedia(SocialMedia media)
@@ -47,7 +53,7 @@ namespace LittleThings.Client.Services.SocialMediaS
             var response = await _httpClient.PutAsJsonAsync($"api/socialmedia/{media.Id}", media);
             if (response.IsSuccessStatusCode)
             {
-                await GetSocialMedias();
+                await GetAdminSocialMedias();
                 _navigationManager.NavigateTo("admin/social-media");
             }
         }
@@ -57,7 +63,7 @@ namespace LittleThings.Client.Services.SocialMediaS
             var response = await _httpClient.PostAsJsonAsync("api/socialmedia", media);
             if (response.IsSuccessStatusCode)
             {
-                await GetSocialMedias();
+                await GetAdminSocialMedias();
                 _navigationManager.NavigateTo("admin/social-media");
             }
         }

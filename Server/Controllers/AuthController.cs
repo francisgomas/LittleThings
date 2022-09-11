@@ -58,11 +58,14 @@ namespace LittleThings.Server.Controllers
         }
 
         [HttpPost("profile")]
+        [Authorize]
         public async Task<ActionResult<ServiceResponse<string>>> Profile([FromBody] string newPassword)
         {
             var response = new ServiceResponse<string>();
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = await _dataContext.User.FindAsync(Guid.Parse(userId));
+            var user = await _dataContext.User
+                .Include(h => h.Role)
+                .FirstOrDefaultAsync(h => h.Id == Guid.Parse(userId));
 
             if (user == null)
             {

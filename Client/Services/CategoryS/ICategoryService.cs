@@ -5,7 +5,6 @@
         List<Category> Categories { get; set; }
         List<SubCategory> SubCategories { get; set; }
         Task GetCategories();
-        Task GetHomeCategories();
         Task GetSubCategories();
         Task DeleteCategory(Guid id);
         Task<Category> GetSingleCategory(Guid id);

@@ -39,31 +39,37 @@ namespace LittleThings.Client.Services.CategoryS
         public async Task GetCategories()
         {
             var result = await _httpClient.GetFromJsonAsync<List<Category>>("api/category");
-            if (result != null)
+            if (result.Count > 0)
             {
                 Categories = result;
             }
-        }
-
-        public async Task GetHomeCategories()
-        {
-            var result = await _httpClient.GetFromJsonAsync<List<Category>>("api/home/categories");
-            if (result != null)
+            else
             {
-                Categories = result.Take(8).ToList();
+                Categories.Clear();
             }
         }
 
         public async Task GetSubCategories()
         {
             var result = await _httpClient.GetFromJsonAsync<List<SubCategory>>("api/subcategory");
-            SubCategories = result;
+            if (result.Count > 0)
+            {
+                SubCategories = result;
+            }
+            else
+            {
+                SubCategories.Clear();
+            }
         }
 
         public async Task<Category> GetSingleCategory(Guid id)
         {
             var result = await _httpClient.GetFromJsonAsync<Category>($"api/category/{id}");
-            return result;
+            if (result != null)
+            {
+                return result;
+            }
+            return new Category();
         }
 
         public async Task UpdateCategory(Category cat)

@@ -4,5 +4,6 @@
     {
         event Action OnChange;
         Task AddToCart(CartItem cartItem);
+        Task GetCartItemsCount();
     }
 }

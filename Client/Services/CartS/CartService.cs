@@ -11,11 +11,13 @@ namespace LittleThings.Client.Services.CartS
         private readonly ILocalStorageService _localStorage;
         private readonly NavigationManager _navigationManager;
         private readonly IAuthService _authService;
-        public CartService(HttpClient httpClient, NavigationManager navigationManager, IAuthService authService)
+        public CartService(HttpClient httpClient, NavigationManager navigationManager, IAuthService authService,
+            ILocalStorageService localStorage)
         {
             _httpClient = httpClient;
             _navigationManager = navigationManager;
             _authService = authService;
+            _localStorage = localStorage;
         }
 
         public event Action OnChange;
@@ -64,7 +66,7 @@ namespace LittleThings.Client.Services.CartS
                 await _localStorage.SetItemAsync<int>("cartItemsCount", cart != null ? cart.Count : 0);
             }
 
-            OnChange.Invoke();
+            //OnChange.Invoke();
         }
     }
 }

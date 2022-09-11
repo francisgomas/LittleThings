@@ -1,8 +1,66 @@
 ﻿@page "/shop"
+@inject IHomeService HomeService;
+@inject ICartService CartService;
+@inject NavigationManager NavigationManager
 
-<PageTitle>Shop</PageTitle>
-<h3>Shop</h3>
+<PageTitle>@GetPageTitle()</PageTitle>
+
+<!-- Products Start -->
+<div class="container-fluid pt-5">
+    <Header Value="@GetPageTitle()"/>
+    @if (HomeService.Products.Count > 0)
+    {
+        <div class="row px-xl-5 pb-3">
+            @foreach (var prod in HomeService.Products)
+            {
+                <div class="col-lg-2 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid w-100" src="@prod.Image" alt="@prod.Title">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3">@prod.Title</h6>
+                            <div class="d-flex justify-content-center">
+                                @if (prod.Price != 0)
+                                {
+                                    <h6>$@prod.Price</h6>
+                                    <h6 class="text-muted ml-2"><del>$@prod.OriginalPrice</del></h6>
+                                }
+                                else
+                                {
+                                    <h6>$@prod.OriginalPrice</h6>
+                                }
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            <a onclick="@(() => NavigationManager.NavigateTo("product/"+prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            <a @onclick="(() => AddToCart(prod.Id))" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h5 style="text-align: center;">We currently do not have any products.</h5> 
+    }
+</div>
 
 @code {
+    private string GetPageTitle() => "Shop";
+    protected override async Task OnInitializedAsync()
+    {
+        await HomeService.GetAllProducts();
+    }
 
+    private async Task AddToCart(Guid id)
+    {
+        var cartItem = new CartItem
+        {
+            ProductId = id,
+        };
+
+        await CartService.AddToCart(cartItem);
+    }
 }

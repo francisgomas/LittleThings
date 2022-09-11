@@ -1,9 +1,9 @@
-﻿@inject ISocialMediaService SocialMediaService;
-@using System.Security.Claims
+﻿@using System.Security.Claims
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthStateProvider
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject ILocalStorageService LocalStorage
+@inject IHomeService HomeService
 
 <!-- Topbar Start -->
 <div class="container-fluid">
@@ -19,9 +19,9 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
-                @if (SocialMediaService.SocialMedias != null)
+                @if (HomeService.SocialMedias != null)
                 {
-                    @foreach (var s in SocialMediaService.SocialMedias)
+                    @foreach (var s in HomeService.SocialMedias)
                     {
                         <a class="text-dark px-2" href="@s.Link" target="_blank">
                             <i class="@s.Icon"></i>
@@ -58,20 +58,9 @@
                         <a @onclick="@(() => NavigationManager.NavigateTo("/"))" class="nav-item nav-link active">Home</a>
                         <a @onclick="@(() => NavigationManager.NavigateTo("/shop"))" class="nav-item nav-link">Shop</a>
                         
-                        @if (!isAdminAuth)
+                        @if (isAdminAuth)
                         {
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="nav-item dropdown">
+                           <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Administration</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a @onclick="@(() => NavigationManager.NavigateTo("admin/social-media"))" class="dropdown-item">Social Media</a>
@@ -109,7 +98,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await SocialMediaService.GetSocialMedias();
+        await HomeService.GetSocialMedias();
 
         if ((await AuthStateProvider.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
         {

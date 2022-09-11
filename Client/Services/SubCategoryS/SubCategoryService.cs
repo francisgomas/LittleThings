@@ -37,15 +37,23 @@ namespace LittleThings.Client.Services.SubCategoryS
         public async Task<SubCategory> GetSingleSubCategory(Guid id)
         {
             var result = await _httpClient.GetFromJsonAsync<SubCategory>($"api/subcategory/{id}");
-            return result;
+            if (result != null)
+            {
+                return result;
+            }
+            return new SubCategory();
         }
 
         public async Task GetSubCategories()
         {
             var result = await _httpClient.GetFromJsonAsync<List<SubCategory>>("api/subcategory");
-            if (result != null)
+            if (result.Count > 0)
             {
                 SubCategories = result;
+            }
+            else
+            {
+                SubCategories.Clear();
             }
         }
 

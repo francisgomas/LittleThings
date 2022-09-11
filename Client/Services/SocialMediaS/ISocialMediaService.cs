@@ -5,7 +5,6 @@ namespace LittleThings.Client.Services.SocialMediaS
     public interface ISocialMediaService
     {
         List<SocialMedia> SocialMedias { get; set; }
-        Task GetSocialMedias();
         Task GetAdminSocialMedias();
         Task DeleteSocialMedia (int id);
         Task<SocialMedia> GetSingleSocialMedia(int id);

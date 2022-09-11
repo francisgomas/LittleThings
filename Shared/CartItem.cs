@@ -14,11 +14,11 @@ namespace LittleThings.Shared
         [Required]
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; }
+        public virtual User? User { get; set; }
         [Required]
         public Guid ProductId { get; set; }
         [ForeignKey(nameof(ProductId))]
-        public virtual Product Product { get; set; }
+        public virtual Product? Product { get; set; }
         [Required]
         public int Quantity { get; set; } = 1;
     }
