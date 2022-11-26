@@ -11,6 +11,10 @@ namespace LittleThings.Shared
     {
         public int Id { get; set; }
         [Required]
+        [Display(Name ="Role Name")]
         public string RoleName { get; set; }
+        [Required]
+        [Display(Name ="Role Description")]
+        public string RoleDescription { get; set; }
     }
 }

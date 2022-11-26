@@ -7,12 +7,14 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Read the connection string from appsettings.
+string dbConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(dbConnectionString)
 );
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

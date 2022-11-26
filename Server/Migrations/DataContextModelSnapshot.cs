@@ -125,6 +125,10 @@ namespace LittleThings.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("RoleDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RoleName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -137,7 +141,14 @@ namespace LittleThings.Server.Migrations
                         new
                         {
                             Id = 1,
+                            RoleDescription = "Custom role for Customer",
                             RoleName = "Customer"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            RoleDescription = "Custom role for Admin",
+                            RoleName = "Admin"
                         });
                 });
 
@@ -188,7 +199,7 @@ namespace LittleThings.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d0a40596-4ad1-4e7f-bda3-3997f2673548"),
+                            Id = new Guid("577c37ca-2972-4e81-bfff-5efb7705290c"),
                             Name = "Mens"
                         });
                 });

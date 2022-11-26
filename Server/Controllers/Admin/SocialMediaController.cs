@@ -4,59 +4,65 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
     [Authorize(Roles = "Admin")]
     [ApiController]
-    public class SocialMediaController : ControllerBase
+    public class SocialMediaController : BaseController
     {
-        private readonly DataContext _dataContext;
-        public SocialMediaController(DataContext context)
+        private readonly ILogger<SocialMediaController> _logger;
+        public SocialMediaController(IConfiguration config, ILogger<SocialMediaController> logger) : base(config)
         {
-            _dataContext = context;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<SocialMedia>>> GetSMLinks()
         {
-            var links = await _dataContext.SocialMedia.ToListAsync();
+            var query = "SELECT * FROM SocialMedia";
+            var links = await GetConnectionString().QueryAsync<SocialMedia>(query);
             return Ok(links);
         }
-
 
         [HttpPost]
         public async Task<ActionResult<List<SocialMedia>>> CreateSocialMedias(SocialMedia sm)
         {
-            _dataContext.SocialMedia.Add(sm);
-            await _dataContext.SaveChangesAsync();
+            var query = "INSERT INTO SocialMedia (icon, link) values (@icon, @link)";
+            await GetConnectionString().ExecuteAsync(query, new
+            {
+                icon = sm.Icon,
+                link = sm.Link
+            });
 
             return Ok(await GetSMLinks());
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<SocialMedia>> UpdateSocialMedia(SocialMedia sm, int id)
+        public async Task<ActionResult<List<SocialMedia>>> UpdateSocialMedia(SocialMedia sm, int id)
         {
-            var socialMedia = await _dataContext.SocialMedia.FirstOrDefaultAsync(h => h.Id == id);
-            if (socialMedia == null)
+            var query = "UPDATE SocialMedia set icon = @icon, link = @link WHERE id = @id";
+            await GetConnectionString().ExecuteAsync(query, new
             {
-                return NotFound();
-            }
-            socialMedia.Id = sm.Id;
-            socialMedia.Icon = sm.Icon;
-            socialMedia.Link = sm.Link;
+                id = id,
+                icon = sm.Icon,
+                link = sm.Link
+            });
 
-            await _dataContext.SaveChangesAsync();
             return Ok(await GetSMLinks());
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<SocialMedia>> DeleteSocialMedia(int id)
         {
-            var socialMedia = await _dataContext.SocialMedia.FirstOrDefaultAsync(h => h.Id == id);
-            _dataContext.SocialMedia.Remove(socialMedia);
-            await _dataContext.SaveChangesAsync();
+            var query = "DELETE FROM SocialMedia WHERE id = @id";
+            await GetConnectionString().ExecuteAsync(query, new
+            {
+                id = id
+            });
             return Ok(await GetSMLinks());
         }
 
@@ -65,15 +71,16 @@ namespace LittleThings.Server.Controllers.Admin
         [Route("{id}")]
         public async Task<ActionResult<SocialMedia>> GetSingleSocialMedia(int id)
         {
-            var sm = await _dataContext.SocialMedia
-            .FirstOrDefaultAsync(h => h.Id == id);
+            var query = "SELECT * FROM SocialMedia WHERE Id = @Id";
+            var links = await GetConnectionString().QueryFirstOrDefaultAsync<SocialMedia>(query, new {
+                Id = id
+            });
 
-            if (sm != null)
+            if (links != null)
             {
-                return Ok(sm);
+                return Ok(links);
             }
             return NotFound("Record not found!");
         }
-
     }
 }

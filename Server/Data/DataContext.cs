@@ -1,5 +1,7 @@
 ﻿using LittleThings.Shared;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace LittleThings.Server.Data
 {
@@ -9,6 +11,16 @@ namespace LittleThings.Server.Data
         {
 
         }
+
+        //private readonly IConfiguration _configuration;
+        //private readonly string _connectionString;
+        //public DataContext(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //    _connectionString = _configuration.GetConnectionString("DefaultConnection");
+        //}
+        //public IDbConnection CreateConnection()
+        //    => new SqlConnection(_connectionString);
 
         //seeding data to DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +39,13 @@ namespace LittleThings.Server.Data
                 {
                     Id = 1,
                     RoleName = "Customer",
+                    RoleDescription = "Custom role for Customer"
+                },
+                new Role
+                {
+                    Id = 3,
+                    RoleName = "Admin",
+                    RoleDescription = "Custom role for Admin"
                 }
             );
 
