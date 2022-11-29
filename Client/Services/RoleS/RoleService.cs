@@ -67,15 +67,5 @@ namespace LittleThings.Client.Services.RoleS
                 _navigationManager.NavigateTo("admin/role");
             }
         }
-
-        public Task UpdateRole(SocialMedia media)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task CreateRole(SocialMedia media)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

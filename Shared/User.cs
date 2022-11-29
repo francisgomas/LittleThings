@@ -20,8 +20,8 @@ namespace LittleThings.Shared
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
-        public int RoleId { get; set; }
-        [ForeignKey(nameof(RoleId))]
-        public virtual Role Role { get; set; }
+        //public int RoleId { get; set; }
+        //[ForeignKey(nameof(RoleId))]
+        //public virtual Role Role { get; set; }
     }
 }

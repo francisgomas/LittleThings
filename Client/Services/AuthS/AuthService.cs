@@ -39,7 +39,5 @@ namespace LittleThings.Client.Services.AuthS
             var result = await _http.PostAsJsonAsync("api/auth/profile", request.Password);
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
-
-
     }
 }

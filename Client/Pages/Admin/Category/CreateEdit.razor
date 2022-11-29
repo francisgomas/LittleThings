@@ -3,7 +3,7 @@
 @inject ICategoryService CategoryService
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
-@attribute [Authorize(Roles = "Admin")]
+@attribute [Authorize(Policy = "Category.Create")]
 
 <PageTitle>@GetPageTitle()</PageTitle>
 

@@ -77,6 +77,27 @@ namespace LittleThings.Server.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("LittleThings.Shared.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ActionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ControllerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permission");
+                });
+
             modelBuilder.Entity("LittleThings.Shared.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -152,6 +173,29 @@ namespace LittleThings.Server.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LittleThings.Shared.RolePermission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RolePermission");
+                });
+
             modelBuilder.Entity("LittleThings.Shared.SocialMedia", b =>
                 {
                     b.Property<int>("Id")
@@ -199,7 +243,7 @@ namespace LittleThings.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("577c37ca-2972-4e81-bfff-5efb7705290c"),
+                            Id = new Guid("8c53defd-56fe-4f19-a879-1a0375193a9c"),
                             Name = "Mens"
                         });
                 });
@@ -229,18 +273,36 @@ namespace LittleThings.Server.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
                     b.HasIndex("RoleId");
 
-                    b.ToTable("User");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("LittleThings.Shared.CartItem", b =>
@@ -284,7 +346,26 @@ namespace LittleThings.Server.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("LittleThings.Shared.User", b =>
+            modelBuilder.Entity("LittleThings.Shared.RolePermission", b =>
+                {
+                    b.HasOne("LittleThings.Shared.Permission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LittleThings.Shared.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("LittleThings.Shared.UserRole", b =>
                 {
                     b.HasOne("LittleThings.Shared.Role", "Role")
                         .WithMany()
@@ -292,7 +373,15 @@ namespace LittleThings.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("LittleThings.Shared.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

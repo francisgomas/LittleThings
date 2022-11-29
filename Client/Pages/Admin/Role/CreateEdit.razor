@@ -1,6 +1,6 @@
-﻿@page "/admin/role/edit"
-@page "/admin/role/edit/{id:int}"
-@inject IRoleService RoleService
+﻿@page "/admin/permission/edit"
+@page "/admin/permission/edit/{id:int}"
+@inject IPermissionService PermissionService
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 @attribute [Authorize(Roles = "Admin")]
@@ -13,19 +13,19 @@
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-12 mb-5">
-                <EditForm Model="role" OnValidSubmit="onSubmit">
+                <EditForm Model="permission" OnValidSubmit="onSubmit">
                     <DataAnnotationsValidator />
                     <div class="control-group mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="Enter role name" @bind-value="role.RoleName">
-                        <ValidationMessage For="@(() => role.RoleName)" />
+                        <input type="text" class="form-control" id="controllername" placeholder="Enter controller name" @bind-value="permission.ControllerName">
+                        <ValidationMessage For="@(() => permission.ControllerName)" />
                     </div>
                     <div class="control-group mb-3">
-                        <input type="text" class="form-control" id="description" placeholder="Enter role description" @bind-value="role.RoleDescription">
-                        <ValidationMessage For="@(() => role.RoleDescription)" />
+                        <input type="text" class="form-control" id="actionname" placeholder="Enter action name" @bind-value="permission.ActionName">
+                        <ValidationMessage For="@(() => permission.ActionName)" />
                     </div>
                     <div>
                         <input class="btn btn-primary py-2 px-5" type="submit" value="@btnText" />
-                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/role"))">Go Back </button>
+                        <button class="btn btn-info py-2 px-5" @onclick="@(() => NavigationManager.NavigateTo("/admin/permission"))">Go Back </button>
                     </div>
                 </EditForm>
 
@@ -39,24 +39,24 @@
     public int? id { get; set; } 
     bool isAuthenticated = false;
     string btnText = string.Empty;
-    private string GetPageTitle() => "Role";
-    Role role = new Role { };
+    private string GetPageTitle() => "Permission";
+    Permission permission = new Permission { };
 
     protected override async Task OnInitializedAsync()
     {
         isAuthenticated = await AuthService.IsUserAuthenticated();
-        btnText = id == null ? "Create Role" : "Update Role";
+        btnText = id == null ? "Create Permission" : "Update Permission";
     }
 
     protected override async Task OnParametersSetAsync()
     {
         if (id != null)
         {
-            role = await RoleService.GetSingleRole((int)id);
+            permission = await PermissionService.GetSinglePermission((int)id);
         } 
         else
         {
-            role = new Role { };
+            permission = new Permission { };
         }
     }
 
@@ -64,11 +64,11 @@
     {
         if (id != null)
         {
-            await RoleService.UpdateRole(role);
+            await PermissionService.UpdatePermission(permission);
         }
         else
         {
-            await RoleService.CreateRole(role);
+            await PermissionService.CreatePermission(permission);
         }
     }
 }

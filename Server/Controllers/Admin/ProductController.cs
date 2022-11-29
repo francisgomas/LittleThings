@@ -9,13 +9,13 @@ using System.Net;
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseController
     {
         private readonly DataContext _dataContext;
 
-        public ProductController(DataContext dataContext)
+        public ProductController(IConfiguration config, DataContext dataContext) : base(config, dataContext)
         {
             _dataContext = dataContext;
         }

@@ -6,18 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Dapper;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [ApiController]
     public class SocialMediaController : BaseController
     {
-        private readonly ILogger<SocialMediaController> _logger;
-        public SocialMediaController(IConfiguration config, ILogger<SocialMediaController> logger) : base(config)
+        public SocialMediaController(IConfiguration config, DataContext context) : base(config, context)
         {
-            _logger = logger;
         }
 
         [HttpGet]

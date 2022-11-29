@@ -29,9 +29,10 @@ namespace LittleThings.Server.Controllers
         public async Task<ActionResult<ServiceResponse<string>>> Login(UserLogin request)
         {
             var response = new ServiceResponse<string>();
-            var user = await _dataContext.User
-                .Include(i => i.Role)
-                .FirstOrDefaultAsync(y => y.Username.ToLower()
+            var user = await _dataContext.UserRole
+                .Include(h => h.User)
+                .Include(h => h.Role)
+                .FirstOrDefaultAsync(y => y.User.Username.ToLower()
                 .Equals(request.Username.ToLower()));
 
             if (user == null)
@@ -39,7 +40,7 @@ namespace LittleThings.Server.Controllers
                 response.Success = false;
                 response.Message = "Invalid credentials";
             }
-            else if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            else if (!VerifyPasswordHash(request.Password, user.User.PasswordHash, user.User.PasswordSalt))
             {
                 response.Success = false;
                 response.Message = "Invalid credentials";
@@ -63,9 +64,10 @@ namespace LittleThings.Server.Controllers
         {
             var response = new ServiceResponse<string>();
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = await _dataContext.User
+            var user = await _dataContext.UserRole
+                .Include(h => h.User)
                 .Include(h => h.Role)
-                .FirstOrDefaultAsync(h => h.Id == Guid.Parse(userId));
+                .FirstOrDefaultAsync(h => h.User.Id == Guid.Parse(userId));
 
             if (user == null)
             {
@@ -76,8 +78,8 @@ namespace LittleThings.Server.Controllers
             
             CreatePasswordHash(newPassword, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            user.User.PasswordHash = passwordHash;
+            user.User.PasswordSalt = passwordSalt;
 
             await _dataContext.SaveChangesAsync();
 
@@ -123,6 +125,8 @@ namespace LittleThings.Server.Controllers
                 };
             }
             var user = new User();
+            var userRole = new UserRole();
+
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.Name = request.Name;
@@ -130,9 +134,12 @@ namespace LittleThings.Server.Controllers
             user.Username = request.Username;
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-            user.RoleId = 1;
-
             _dataContext.User.Add(user);
+
+            userRole.UserId = user.Id;
+            userRole.RoleId = 1;
+            _dataContext.UserRole.Add(userRole);
+
             await _dataContext.SaveChangesAsync();
 
             var resp = new ServiceResponse<Guid> { Data = user.Id, Message = "Registration successful!" };
@@ -164,12 +171,12 @@ namespace LittleThings.Server.Controllers
             }
         }
 
-        private string CreateToken(User user)
+        private string CreateToken(UserRole user)
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.User.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.User.Username),
                 new Claim(ClaimTypes.Role, user.Role.RoleName)
             };
 

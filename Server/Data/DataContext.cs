@@ -12,16 +12,6 @@ namespace LittleThings.Server.Data
 
         }
 
-        //private readonly IConfiguration _configuration;
-        //private readonly string _connectionString;
-        //public DataContext(IConfiguration configuration)
-        //{
-        //    _configuration = configuration;
-        //    _connectionString = _configuration.GetConnectionString("DefaultConnection");
-        //}
-        //public IDbConnection CreateConnection()
-        //    => new SqlConnection(_connectionString);
-
         //seeding data to DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,6 +53,9 @@ namespace LittleThings.Server.Data
         public DbSet<SubCategory> SubCategory { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+        public DbSet<RolePermission> RolePermission { get; set; }
         public DbSet<CartItem> CartItem { get; set; }
         public DbSet<Product> Product { get; set; }
     }

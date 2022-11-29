@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Dapper;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [ApiController]
     public class RoleController : BaseController
     {
-        public RoleController(IConfiguration config) : base(config)
+        public RoleController(IConfiguration config, DataContext context) : base(config, context)
         {
         }
 

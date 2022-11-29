@@ -1,5 +1,7 @@
 using LittleThings.Server.Data;
+using LittleThings.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
@@ -13,6 +15,7 @@ string dbConnectionString = builder.Configuration.GetConnectionString("DefaultCo
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(dbConnectionString)
 );

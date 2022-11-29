@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 namespace LittleThings.Server.Controllers.Admin
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     [ApiController]
-    public class SubCategoryController : ControllerBase
+    public class SubCategoryController : BaseController
     {
         private readonly DataContext _dataContext;
-        public SubCategoryController(DataContext dataContext)
+        public SubCategoryController(IConfiguration config, DataContext dataContext) : base(config, dataContext)
         {
             _dataContext = dataContext;
         }
